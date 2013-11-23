@@ -1,0 +1,7 @@
+Discretization error can be defined for surface grids be comparing the "amount" of discrete representation to the "amount" of continuous representation.
+
+For a line segment, or edge, a comparison should be made between the arc length of the edge and the arc length of the portion of the curve which the edge represents.
+
+For a triangle (the only guaranteed-planar element) (get into why quads and higher elements are their own form of parametric surface and they should not be considered here because of their nebulous definition) a comparison should be made between the area of the triangle and the area of the portion of the surface which the triangle represents.
+
+However, on a surface these two are coupled. If only the edge length of the edges is considered then it is demonstrable that the edges could have little to no representation deficit but the triangles which are defined by these edges are very poor representations of the underlying surface. If only the area of triangles is considered then a very probable outcome is the formation of degenerate triangles with zero area.
