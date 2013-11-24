@@ -1,7 +1,31 @@
-Discretization error can be defined for surface grids be comparing the "amount" of discrete representation to the "amount" of continuous representation.
+Discretization error can be defined for surface grids be comparing the
+``amount'' of discrete representation to the ``amount'' of continuous
+representation. Here, this means directly comparing the surface area of
+the discrete surface to that of the continuous surface. For a
+triangulated surface, there are two types of entities representing the
+surface: line segment, and triangle. For a line segment, or edge, a
+comparison should be made between the arc length of the edge and the arc
+length of the portion of the surface which the edge represents. For a
+triangle a comparison should be made between the area of the triangle
+and the area of the portion of the surface which the triangle
+represents. This difference between the surface area of the
+discretization and the surface area of the underlying geometrical
+representation is defined here as {\it representation-deficit}.
 
-For a line segment, or edge, a comparison should be made between the arc length of the edge and the arc length of the portion of the curve which the edge represents.
+[PARAGRAPH ABOUT OPTIMAL SUBSTRUCTURE]
 
-For a triangle (the only guaranteed-planar element) (get into why quads and higher elements are their own form of parametric surface and they should not be considered here because of their nebulous definition) a comparison should be made between the area of the triangle and the area of the portion of the surface which the triangle represents.
+It should be noted that for an edge on a discrete surface the change in
+edge-length also corresponds to a change in surface-area.Therefore, the
+change in edge length and the change in surface area must be taken into
+account during the refinement process. If only the edge length of the
+edges is considered then it is demonstrable that the edges could have
+little to no representation deficit but the triangles which are defined
+by these edges are a poor representations of the underlying surface.
+[FIGURE] If only the area of triangles is considered then a very
+probable outcome is the formation of degenerate triangles with zero
+area. [EXPLAIN FURTHER ABOUT THE REFINEMENT PROCESS NOT BEING ABLE TO
+CROSS AN EDGE, OPTIMAL SUBSTRUCTURE, ETC...]
 
-However, on a surface these two are coupled. If only the edge length of the edges is considered then it is demonstrable that the edges could have little to no representation deficit but the triangles which are defined by these edges are very poor representations of the underlying surface. If only the area of triangles is considered then a very probable outcome is the formation of degenerate triangles with zero area.
+(the only guaranteed-planar element is a triangle. get into why quads and higher
+elements are their own form of parametric surface and they should
+not be considered here because of their nebulous definition)
