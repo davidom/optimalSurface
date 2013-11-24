@@ -1,0 +1,36 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=2in, bottom=1.5in, left=1in, right=1in]{geometry}
+
+\begin{document}
+\section{Introduction}
+\section{Related Work}
+\section{Clarification on Mesh Refinement}
+Very few algorithms are true mesh generation, in the sense that most refine some initial discretization based on a priori error estimates [REFERENCES]. This approach, historically and in a modern sense, have been spectacularly successful in their efforts to produce high quality meshes for computational simulation. This work, however, seeks to explore the concept of optimal mesh representation instead of optimal mesh quality. In other words, what is an optimal representation and how can it be generated?
+
+The word ``optimal'' carries with it many meanings depending on the application or context. Here, optimal will be discussed in terms of representation. Consider a continuous, parameterized surface $S$, and corresponding discrete representation, $D$. In order to generate $D$, some original discretization, $D_i$, (usually coarse) will be created and then systematically refined to create the final discretization, $D_f$. The final discretization, $D_f$ approximates $S$ to an acceptable degree--but is still an approximation. This work seeks to defined discretization error of a surface grid with respect to an underlying geometrical representation. In addition, an analysis of the refinement process and a formally definition of each of the [common/fundamental/atomic] operations will be explored.
+
+\section{Optimal Substucture vs Global Optimization}
+Determining {\it an} optimal representation is obviously not the same as creating {\it the} optimal representation. This is classical difference between local and global optimization. Research has been done on optimal curve discretization and, for the most part, the solutions that were developed employ local optimization [REFERENCES]. The reason most often given is efficiency of computation. The potential gain of realizing a global optimum do not outweigh the practical cost of computing {\it the} optimal solution. In [REFERENCE TO SELF] a formal definition/framework of the global optimization problem of curve discretization was developed. As an extension to that work, a formal definition/framework of a globally optimal surface grid will be developed here.
+
+First the choice of surface grid element must be made. Here, in order to simplify[? better word/phrase] analysis only linear elements are allowed in the discretization: linear line-segments or edges, and triangles. This choice was made because of the unambiguous definition of edge-length and surface area associated with linear elements. The surface area of a quadrilateral might be computable in all cases [VARIGNON'S THEOREM REFERENCE] (something not guaranteed with all non-planar polygons), but the actual representation is ambiguous at best and non-deterministic at worst [REPHRASE/CLARIFY]. The unambiguous nature of edge-length and surface area computation allows the formulation of an error associated with each discrete portion of the surface grid.
+
+\subsection{Discretization Error}
+[DEFINITION OF REPRESENTATION DEFICIT]
+
+[section on topology (integer programming) and nodal placement with a fixed topology, nodal placement with changing topology would be very, very difficult--out of the scope of even mentioning it in this paper]
+
+With respect to optimal surface grid refinement, any discretization exhibits optimal substructure. That is, if each piece of the discretization is optimized then the collection of optimized pieces is also optimal. [MORE, REFERENCES] This is regardless of the choice of discrete element.
+
+
+\section{Representation via Representation Deficit}
+\subsection{Representation-Deficit Definitions}
+\subsubsection{Triangle Split}
+\subsubsection{Edge Split}
+\subsubsection{Node Smoothing}
+\subsection{Notes on Edge-Swapping}
+\section{Error Bounds}
+\section{Experimental Results}
+\section{Conclusions}
+\section{Acknowledgements}
+\end{document}
