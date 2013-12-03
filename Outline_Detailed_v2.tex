@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=2in, bottom=1.5in, left=1in, right=1in]{geometry}
+\usepackage{amssymb}
+
+\begin{document}
+\section{Introduction}
+\section{Related Work}
+\section{Nomenclature and Definitions}
+\subsection{Parametric Surface}
+I need a parametric surface so that I can maintain a valid topology.
+Projection is not required since the topology gives me uv bounds. The
+mesh generation is going on in parametric space. There is an
+optimization function for creating the mesh parametric space. Parametric
+space is also great for optimization since you can write the topology
+and optimization function constraints in uv space. Mapping a
+discretization to a surface in general involved the determination of
+"what" an edge means on the surface---whether it's a geodesic line, or
+what...
+
+Consider an orientable, parameterized surface, $\vec{S}\left(u,v\right)
+  : {\mathbb R}^2 \rightarrow {\mathbb R}^3$.
+\subsection{Discretization}
+Consider a discretization, $D$, defined on $S$, comprised of $n_t$
+points, $P_i \in \left\{p_1,...,p_{n_t} \right\}$, and a
+non-overlapping, non-degenerate, consistently oriented, triangular
+connectivity $T$. Each triangle in $T$, $t_i$, is defined by points
+$\left(p_j, p_k, p_m\right)$, and edges $\left(e_n, e_o,
+e_p\right)$---where the edges are defined (for $t_i$) as $e_n
+\left(p_j, p_k\right)$, $e_o \left(p_k, p_m\right)$, $e_p \left(p_m,
+p_j\right)$. For the purposes of defining an edge in this work, the
+ordering of the nodes does not matter. However, the ordering is used to
+maintain consistent orientation during topological operations and to
+define constraints in the developed optimization strategy.
+
+Each point , $p_i$, in $D$ is defined at a $\left(u,v\right)$
+coordinate, and edge edge is a straight line in both parametric space
+and in ${\mathbb R}^3$. In the absence of a parameterization the mapping
+of an edge in ${\mathbb R}^3$ to a curve (possibly a straight line, but
+not guaranteed) on a surface is an ambiguous task which is outside
+the scope of this work. Additionally, topological constraints for
+optimization, which will be detailed later, would be impossible in
+general to define outside of a parameterized, planar space.[MAYBE MORE
+ON THIS AND MAYBE MOVE THIS TO ANOTHER SECTION OR REORDER TOPICS]
+
+\subsubsection{Trias, Edges}
+\subsubsection{Toplogy}
+By ordering each the connectivity for each triangle in $T$ such that it
+has a positive normal, topological constraints can be defined on the
+optimization problem.
+\subsection{Discretization Error}
+\subsection{Representation Deficit}
+Representation deficit is defined for an operation:
+\subsubsection{Triangle Split}
+The representation deficit for a triangle split is defined here as the
+difference between the area original triangle and the combined area of
+the three new triangles---where the area is calculated in ${\mathbb
+R}^3$.
+\subsubsection{Edge Split}
+The representation for an edge split must consider both the change in
+edge length as well as the change in area that can occur when an edge is
+split. But is this necessary to consider the edge-length since the
+purpose is refine such that the surface area of $D$ approaches the
+surface area of $S$? The answer here is no, only the area change is
+considered between the previous configuration and the ``new''
+configuration.
+\subsubsection{Nodal Smoothing}
+For a node, $n_i$, the representation deficit can be defined only by comparing
+it to the node when located at another point in space. Here the
+comparison is bound by limiting the range of comparison within the edge-hull
+topologically adjacent to $n_i$. This is functionally equivalent to
+smoothing to maximize surface area.
+\section{Optimal Substucture vs Global Optimization}
+\subsection{Representation Deficit as a Global Optimization Problem}
+Let us develop the definition of a global optimization problem using the
+concept of representation deficit as an objective function. First
+consider all of the variables: the number of points ($n_p$), the
+optimized topology/connectivity ($T_o$), and the position/location of
+the points ($\vec{N_i}$).
+\subsubsection{Fixed $n_p$, Fixed $T_o$}
+To start, let us define the problem as simply
+as possible: a fixed number of points, a fixed topology, and the points
+have a variable position.  The optimization problem is defined as
+follows:
+[DEFINITION OF OPTIMIZATION PROBLEMS]
+[HOW TO FIT IN THE EDGE FLIPPING AS AN OPTIMIZATION PROBLEM? I CAN
+JUSTIFY IT VIA HAND-WAVING, BUT NEED SOME WAY TO EXPLAIN IT BETTER]
+\section{Clarification on Mesh Refinement}
+\section{Refinement via Representation Deficit}
+\subsection{Triangle Split}
+\subsection{Edge Split}
+\subsection{Node Smoothing}
+\subsection{Notes on Edge-Swapping}
+\section{Error Bounds}
+\section{Experimental Results}
+\section{Conclusions}
+\section{Acknowledgements}
+\end{document}
