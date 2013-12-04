@@ -1,11 +1,13 @@
 \documentclass[11pt]{article}
 
-\usepackage[top=2in, bottom=1.5in, left=1in, right=1in]{geometry}
+\usepackage[top=1in, bottom=1.5in, left=1in, right=1in]{geometry}
 \usepackage{amssymb}
 
 \begin{document}
 \section{Introduction}
+
 \section{Related Work}
+
 \section{Nomenclature and Definitions}
 \subsection{Parametric Surface}
 I need a parametric surface so that I can maintain a valid topology.
@@ -64,33 +66,72 @@ purpose is refine such that the surface area of $D$ approaches the
 surface area of $S$? The answer here is no, only the area change is
 considered between the previous configuration and the ``new''
 configuration.
+\subsubsection{Edge Flipping}
+Is it possible to have an optimal topology? If so, then it should be
+reachable through repeated edge flipping. Therefore, we should be able
+to write some sort of formulation for a pair of triangles and go from
+there? [SUZANNE] Comment: for the sake of not doing any more coding, if
+your ethics can let you come to the conclusion that this is either not
+possible or not practical then this would fit into the
+logic/justification in the next section.
 \subsubsection{Nodal Smoothing}
-For a node, $n_i$, the representation deficit can be defined only by comparing
-it to the node when located at another point in space. Here the
-comparison is bound by limiting the range of comparison within the edge-hull
-topologically adjacent to $n_i$. This is functionally equivalent to
-smoothing to maximize surface area.
+For a node, $n_i$, the representation deficit can be defined only by
+comparing it to the node when located at another point in space. Here
+the comparison is bound by limiting the range of comparison within the
+edge-hull topologically adjacent to $n_i$. This is functionally
+equivalent to smoothing to maximize surface area.
+
 \section{Optimal Substucture vs Global Optimization}
-\subsection{Representation Deficit as a Global Optimization Problem}
-Let us develop the definition of a global optimization problem using the
+[NEED TO COME TO THE CONCLUSION HERE THAT GLOBAL OPTIMIZATION IS NOT
+PRACTICAL] [COMMENT ON HOW ITERATIVE REFINEMENT IS USED HERE, NOT
+SETTING UP SOME GLOBAL EQUATIONS]
+\subsection{Local Optimization via Pattern Matching}
+[Suzanne] I used a simple "cross" pattern (up down left right center)
+and sized it based on the local geometry so that it could be moved
+inside of the triangles/hulls many times before encountering the
+boundary.
+
+\section{Representation Deficit as Local/Iterative Optimization}
+Let us develop the definition of a local optimization problem using the
 concept of representation deficit as an objective function. First
 consider all of the variables: the number of points ($n_p$), the
 optimized topology/connectivity ($T_o$), and the position/location of
 the points ($\vec{N_i}$).
-\subsubsection{Fixed $n_p$, Fixed $T_o$}
-To start, let us define the problem as simply
-as possible: a fixed number of points, a fixed topology, and the points
-have a variable position.  The optimization problem is defined as
-follows:
+\subsection{Fixed $n_p$, Fixed $T_o$, Dyanamic $\vec{N_i}$}
+To start, let us define the problem as simply as possible: a fixed
+number of points, a fixed topology, and the points have a variable
+position.  The local optimization problem is defined as follows: [For
+each node, $n_i$, determine the surface area of the topologically
+adjacent triangles, $A_0$. Calculate the objective function for each of
+the four candidate new positions in the pattern, $\left(O_{up},
+O_{down}, O_{left}, O_{right}\right)$. Determine the minimum value from
+the objective functions calculations, $O_{min}$. Compare $O_{min}$ to
+the representation deficit change limit. Move if appropriate]
 [DEFINITION OF OPTIMIZATION PROBLEMS]
 [HOW TO FIT IN THE EDGE FLIPPING AS AN OPTIMIZATION PROBLEM? I CAN
 JUSTIFY IT VIA HAND-WAVING, BUT NEED SOME WAY TO EXPLAIN IT BETTER]
-\section{Clarification on Mesh Refinement}
-\section{Refinement via Representation Deficit}
-\subsection{Triangle Split}
-\subsection{Edge Split}
-\subsection{Node Smoothing}
-\subsection{Notes on Edge-Swapping}
+\subsubsection{Race Condition}
+In practice it was observed that nodes will often move toward each other
+when there is a ``local minimum'' nearby. Here this phenomenon is called
+a {\it race-condition}. However, once the two nodes get sufficiently
+near to each other one will inevitably get to the local minimum first
+and the other node will be ``pushed'' the away.
+\subsection{Fixed $n_p$, Dynamic $T_o$}
+\subsubsection{Edge Flipping}
+Another phenomenon that was noticed was that during the smoothing the
+nodes would often be repositioned near edges. This usually meant that
+either the nearby minimum was either on the edge or on the other
+topological side of the edge. Without some sort of intervention, this
+would lead to nearly degenerate geometry being formed. In order to
+prevent geometry which could cause numerical robustness issues, when a
+node neared an edge the edge was flipped. This allowed the node to move
+unobstructed by the newly-reconnected edge.
+
+The criteria for determining if a node is ``too close'' to an edge is
+based on the pattern. If the minimum value for the objective function is
+on or across an edge, then the edge is flipped and the process is
+repeated with the new topology.
+
 \section{Error Bounds}
 \section{Experimental Results}
 \section{Conclusions}
