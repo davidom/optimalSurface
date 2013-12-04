@@ -116,21 +116,39 @@ when there is a ``local minimum'' nearby. Here this phenomenon is called
 a {\it race-condition}. However, once the two nodes get sufficiently
 near to each other one will inevitably get to the local minimum first
 and the other node will be ``pushed'' the away.
-\subsection{Fixed $n_p$, Dynamic $T_o$}
+\subsection{Fixed $n_p$, Dynamic $T_o$, Dyanamic $\vec{N_i}$}
 \subsubsection{Edge Flipping}
 Another phenomenon that was noticed was that during the smoothing the
 nodes would often be repositioned near edges. This usually meant that
-either the nearby minimum was either on the edge or on the other
-topological side of the edge. Without some sort of intervention, this
-would lead to nearly degenerate geometry being formed. In order to
-prevent geometry which could cause numerical robustness issues, when a
-node neared an edge the edge was flipped. This allowed the node to move
-unobstructed by the newly-reconnected edge.
+the nearby minimum was on the edge or on the other topological side of
+the edge. Without some sort of intervention, this would lead to nearly
+degenerate geometry being formed. In order to prevent geometry which
+could cause numerical robustness issues, when a node neared an edge the
+edge was flipped. This allowed the node to move unobstructed by the
+newly-reconnected edge.
 
 The criteria for determining if a node is ``too close'' to an edge is
 based on the pattern. If the minimum value for the objective function is
 on or across an edge, then the edge is flipped and the process is
 repeated with the new topology.
+
+\subsection{Dynamic $n_p$, Dynamic $T_o$, Fixed $\vec{N_i}$}
+This formulation is not well-posed in that without some sort of limit on
+the number of nodes to add to the discretization {\it the} optimal
+triangulation has infinite points. An infinitely refined surface would
+have no discretization error. However, there is a limiting term that
+ensures that infinite refinement will not occur: representation-deficit
+limit [RENAME?]. This method of optimization takes advantage of the
+optimal substructure associated with this optimization problem. Each
+triangle is considered and the optimal nodal position is calculated
+using the aforementioned pattern matching. However, there are some
+limits on where these points can reside. If the pattern-matching leads
+to a nodal position is too close to an edge then it is rejected.
+
+\subsection{Dynamic $n_p$, Dynamic $T_o$, Dynamic $\vec{N_i}$}
+This formulation combines all of the above modes by iteratively
+combining representation-deficit driven refinement with nodal smoothing
+and local reconnection.
 
 \section{Error Bounds}
 \section{Experimental Results}
