@@ -5,6 +5,13 @@
 
 \begin{document}
 \section{Introduction}
+Surface grid generation is a rich and mature topic.
+
+In order to focus only on the contribution presented here, only a
+limited background or explanation will be given for each related topic.
+To accomplish this focused presentation, the author will assume the
+reader possesses a working knowledge of commonly used phrases and
+concepts associated with discrete geometry and mesh generation.
 
 \section{Related Work}
 
@@ -13,15 +20,18 @@
 I need a parametric surface so that I can maintain a valid topology.
 Projection is not required since the topology gives me uv bounds. The
 mesh generation is going on in parametric space. There is an
-optimization function for creating the mesh parametric space. Parametric
+optimization function for creating the mesh in parametric space. Parametric
 space is also great for optimization since you can write the topology
 and optimization function constraints in uv space. Mapping a
 discretization to a surface in general involved the determination of
 "what" an edge means on the surface---whether it's a geodesic line, or
-what...
+what... If you can do this that's great but the development of a map
+is not the purpose of this work so, for ease of presentation, a
+parametric surface is used.
 
 Consider an orientable, parameterized surface, $\vec{S}\left(u,v\right)
-  : {\mathbb R}^2 \rightarrow {\mathbb R}^3$.
+: {\mathbb R}^2 \rightarrow {\mathbb R}^3$.
+
 \subsection{Discretization}
 Consider a discretization, $D$, defined on $S$, comprised of $n_t$
 points, $P_i \in \left\{p_1,...,p_{n_t} \right\}$, and a
@@ -35,37 +45,96 @@ ordering of the nodes does not matter. However, the ordering is used to
 maintain consistent orientation during topological operations and to
 define constraints in the developed optimization strategy.
 
-Each point , $p_i$, in $D$ is defined at a $\left(u,v\right)$
-coordinate, and edge edge is a straight line in both parametric space
-and in ${\mathbb R}^3$. In the absence of a parameterization the mapping
+Each point, $p_i$, in $D$ is defined at a $\left(u,v\right)_i$
+coordinate, and edge is a straight line in both parametric space and in
+${\mathbb R}^3$. This is not the case for a discretization which is
+mapped onto a surface. In the absence of a parameterization the mapping
 of an edge in ${\mathbb R}^3$ to a curve (possibly a straight line, but
-not guaranteed) on a surface is an ambiguous task which is outside
-the scope of this work. Additionally, topological constraints for
-optimization, which will be detailed later, would be impossible in
-general to define outside of a parameterized, planar space.[MAYBE MORE
-ON THIS AND MAYBE MOVE THIS TO ANOTHER SECTION OR REORDER TOPICS]
+    not guaranteed) on a surface is an ambiguous task which is outside
+the scope of this work. Additionally, the development of topological
+constraints for optimization, which will be detailed later, would not be
+as straightforward as is possible when using a parameterized, planar
+space.[MAYBE MORE ON THIS AND MAYBE MOVE THIS TO ANOTHER SECTION OR
+REORDER TOPICS]
 
-\subsubsection{Trias, Edges}
 \subsubsection{Toplogy}
 By ordering each the connectivity for each triangle in $T$ such that it
-has a positive normal, topological constraints can be defined on the
-optimization problem.
-\subsection{Discretization Error}
+has a positive normal, it is straightforward to maintain valid
+(non-overlapping) topology during optimization. This is done by not
+allowing a topological change, such as an edge swap or nodal movement,
+that creates invalid topology.
+
 \subsection{Representation Deficit}
-Representation deficit is defined for an operation:
-\subsubsection{Triangle Split}
-The representation deficit for a triangle split is defined here as the
-difference between the area original triangle and the combined area of
-the three new triangles---where the area is calculated in ${\mathbb
-R}^3$.
-\subsubsection{Edge Split}
-The representation for an edge split must consider both the change in
-edge length as well as the change in area that can occur when an edge is
-split. But is this necessary to consider the edge-length since the
-purpose is refine such that the surface area of $D$ approaches the
-surface area of $S$? The answer here is no, only the area change is
-considered between the previous configuration and the ``new''
-configuration.
+The concept of representation deficit was discussed [REFERENCE] in the
+context of curve discretizations. Here, the concept will be extended to
+two dimensions. Representation deficit is defined for an operation:
+
+[SCALE INDEPENDENCE]
+
+\subsubsection{Triangle}
+A triangle is a planar object, and is representing a possibly non-planar
+portion of a surface. Any triangle, with area $A_T$, in the
+discretization can have at most the same area as the portion of the
+surface which it represents, $A_S$. Therefore, the representation
+deficit for a triangle, $RD_T$, can be defined as $RD_T = \frac{A_S -
+A_T}{A_T}$. Note that the areas are calculated in ${\mathbb R}^3$. The
+difference in surface area, $\left(A_S - A_T\right)$, is normalized by
+$A_T$ so that the result is scale independent. Also, this is a
+representation {\it deficit} since $A_S \ge A_T$ is always true.
+
+In order to apply the above definition of representation deficit to a
+mesh generation, a replacement for $A_S$ must be determined since the
+area of the surface represented by $A_S$ is not always able to be
+determined --- or, most often, the area calculation is impractical.
+Generally, in order to reduce the representation deficit for a triangle
+the triangle is split by inserting an interior point. Any point that is
+inserted into the interior of the triangle would decrease the
+representation deficit --- or at worst it will remain the same. However,
+the determination of where to split the triangle should be done in such
+a way that the representation deficit is minimized. This strategy of
+refinement, refining each triangle in such a way that the representation
+deficit is locally minimized,  would take advantage of the optimal
+substructure the discrete topology.
+
+The process of determining where to split a triangle is defined here by
+a locally optimizing an objective function defined for a triangle:
+[OPTIMIZATION FUNCTION DEFINITION]
+
+\subsubsection{Edge}
+An edge in parametric space represents a (possible) curve on the
+surface. Any edge, with length $L_E$, can have at most the same length
+as the portion of the surface which it represents, $L_S$. Therefore, the
+representation deficit for an edge, $RD_E$, can be defined as $RD_E =
+\frac{L_S - L_E}{L_E}$. Note that the lengths are calculated in
+${\mathbb R}^3$. The difference in length, $\left(L_S - L_E\right)$, is
+normalized by $L_E$ so that the result is scale independent. Also, this
+is a representation {\it deficit} since $L_S \ge L_E$ is always true;
+
+In order to apply the above definition of representation deficit to mesh
+generation, a replacement for $L_S$ must be determined since the area of
+the surface represented by $L_S$ is not always able to be determined --
+or, most often, the arc-length calculation is impractical.
+Generally, in order to reduce the representation deficit for an edge 
+the edge is split by inserting an interior point. Any point that is
+inserted into the interior of the edge would decrease the
+representation deficit --- or at worst it will remain the same. However,
+the determination of where to split the edge should be done in such
+a way that the representation deficit is minimized. This strategy of
+refinement, refining each edge in such a way that the representation
+deficit is locally minimized,  would take advantage of the optimal
+substructure the discrete topology. A method for generating a locally
+optimal edge split is detailed in [REFERENCE SELF].
+
+In addition, the fact that and edge split will change the surface area
+of the discretization should be considered. Since the overall
+justification of this work is reduce the {\it area} representation
+deficit of a discretization, the representation deficit will not be
+defined for an edge but for an edge-split. Therefore, for a given edge,
+only the edge-split that minimizes representation deficit is considered.
+. The process of determining where to split a triangle is defined here
+by locally optimizing an objective function defined for an edge-split:
+[MORE WORDS, SYMBOLS, CLARIFICATION, FOUR TRIANGLES FROM TWO ETC]
+
 \subsubsection{Edge Flipping}
 Is it possible to have an optimal topology? If so, then it should be
 reachable through repeated edge flipping. Therefore, we should be able
