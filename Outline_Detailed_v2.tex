@@ -118,10 +118,10 @@ $T$ can be stated as:
 
 \begin{eqnarray*}
 \begin{array}{rcl}
-\text{minimize} \ O(T) & = & -\left(A\left(T_i\right) + A\left(T_j\right) + A\left(T_k\right) \right) \\
-\text{subject to} \ N_{T_i} > 0 \\
-N_{T_j} > 0 \\ 
-N_{T_k} > 0 \\
+\underset{n_O}{\text{minimize}} \ O(T) & = & -\left(A\left(T_i\right) + A\left(T_j\right) + A\left(T_k\right) \right) \\
+\text{subject to} \ N_{T_i} & > & 0 \\
+N_{T_j} & > & 0 \\ 
+N_{T_k} & > & 0 \\
 \end{array}
 \end{eqnarray*}
 
@@ -169,11 +169,11 @@ $E$ can be stated as:
 
 \begin{eqnarray*}
 \begin{array}{rcl}
-\text{minimize} \ O(T) & = & -\left(A\left(T_a\right) + A\left(T_b\right) + A\left(T_c\right) A\left(T_d\right) \right) \\
-\text{subject to} \ N_{T_a} > 0 \\
-N_{T_b} > 0 \\ 
-N_{T_c} > 0 \\
-N_{T_d} > 0 \\
+\underset{n_O}{\text{minimize}} \ O(E) & = & -\left(A\left(T_a\right) + A\left(T_b\right) + A\left(T_c\right) A\left(T_d\right) \right) \\
+\text{subject to} \ N_{T_a} & > & 0 \\
+N_{T_b} & > & 0 \\ 
+N_{T_c} & > & 0 \\
+N_{T_d} & > & 0 \\
 \end{array}
 \end{eqnarray*}
 
@@ -187,11 +187,26 @@ possible or not practical then this would fit into the
 logic/justification in the next section.
 
 \subsubsection{Nodal Smoothing}
-For a node, $n_i$, the representation deficit can be defined only by
+For a node, $N_i$, the representation deficit can be defined only by
 comparing it to the node when located at another point in space. Here
 the comparison is bound by limiting the range of comparison within the
-edge-hull topologically adjacent to $n_i$. This is functionally
-equivalent to smoothing to maximize surface area.
+edge-hull topologically adjacent to $N_i$. Formally, let $N_i$ be a node
+in $D$ that is shared topologically by $n$ triangles, where $n$ is the
+face-valence of $N_i$. The optimization for finding the optimal position
+for $N_i$ can be stated as:
+
+\begin{eqnarray*}
+\begin{array}{rcl}
+\underset{N_O}{\text{minimize}} \ O(N) & = &
+-\sum{_{j=1}^{n_t-1}A\left(T_j\right)} \\
+\text{subject to} \ N_{T_1} & > & 0 \\
+N_{T_2} & > & 0 \\ 
+N_{T_3} & > & 0 \\
+& \vdots & \\
+N_{T_{n-1}} & > & 0 \\ 
+N_{T_n} & > & 0
+\end{array}
+\end{eqnarray*}
 
 \section{Optimal Substucture vs Global Optimization}
 [NEED TO COME TO THE CONCLUSION HERE THAT GLOBAL OPTIMIZATION IS NOT
