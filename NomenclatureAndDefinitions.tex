@@ -15,6 +15,7 @@ Consider an orientable, parameterized surface, $\vec{S}\left(u,v\right)
 : {\mathbb R}^2 \rightarrow {\mathbb R}^3$.
 
 \subsection{Discretization}
+\subsubsection{TALK ABOUT HOW ONLY TRIAS ARE USEFUL, NOT QUADS}
 Consider a discretization, $D$, defined on $S$, comprised of $n_t$
 points, $P_i \in \left\{p_1,...,p_{n_t} \right\}$, and a
 non-overlapping, non-degenerate, consistently oriented, triangular
@@ -47,7 +48,7 @@ allowing a topological change, such as an edge swap or nodal movement,
 that creates invalid topology.
 
 \subsection{Representation Deficit}
-The concept of representation deficit was discussed [REFERENCE] in the
+The concept of representation deficit was discussed in \cite{mclaurin13} in the
 context of curve discretizations. Here, the concept will be extended to
 two dimensions. Representation deficit is defined for an operation:
 
@@ -127,7 +128,7 @@ a way that the representation deficit is minimized. This strategy of
 refinement, refining each edge in such a way that the representation
 deficit is locally minimized,  would take advantage of the optimal
 substructure the discrete topology. A method for generating a locally
-optimal edge split is detailed in [REFERENCE SELF].
+optimal edge split is detailed in \cite{mclaurin12,mclaurin13}[OTHERS].
 
 In addition, the fact that and edge split will change the surface area
 of the discretization should be considered. Since the overall
