@@ -1,0 +1,142 @@
+The concept of representation deficit was discussed in \cite{mclaurin13} in the
+context of curve discretizations. Here, the concept will be extended to
+two dimensions. Representation deficit is defined for an operation:
+
+[SCALE INDEPENDENCE]
+
+\subsubsection{Triangle}
+A triangle is a planar object, and is representing a possibly non-planar
+portion of a surface. Any triangle, with area $A_T$, in the
+discretization can have at most the same area as the portion of the
+surface which it represents, $A_S$. Therefore, the representation
+deficit for a triangle, $RD_T$, can be defined as $RD_T = \frac{A_S -
+A_T}{A_T}$. Note that the areas are calculated in ${\mathbb R}^3$. The
+difference in surface area, $\left(A_S - A_T\right)$, is normalized by
+$A_T$ so that the result is scale independent. Also, this is a
+representation {\it deficit} since $A_S \ge A_T$ is always true.
+
+In order to apply the above definition of representation deficit to a
+mesh generation, a replacement for $A_S$ must be determined since the
+area of the surface represented by $A_S$ is not always able to be
+determined --- or, most often, the area calculation is impractical.
+Generally, in order to reduce the representation deficit for a triangle
+the triangle is split by inserting an interior point. Any point that is
+inserted into the interior of the triangle would decrease the
+representation deficit --- or at worst it will remain the same. However,
+the determination of where to split the triangle should be done in such
+a way that the representation deficit is minimized. This strategy of
+refinement, refining each triangle in such a way that the representation
+deficit is locally minimized, would take advantage of the optimal
+substructure the discrete topology.
+
+The process of determining where to split a triangle is defined here by
+a locally optimizing an objective function defined for a triangle: Let
+$S(u,v)$ be a parameterized surface, $D$ be be a discretization of the
+surface, and $T$ be a triangle (included in $D$) defined by an ordered
+tuple of nodes, $\left(n_i, n_j, n_k\right)$. These nodes are ordered
+such that the triangle normal is positive. Specifically, if $\vec{V_0} =
+\left\{n_j - n_i \right\}$ and $\vec{V_1} = \left\{n_k - n_i\right\}$
+then the triangle normal, $N_T = \vec{V_0} \times \vec{V_1}$, is
+positive. Note that a two-dimensional cross-product (or two-dimensional
+curl) is a scalar quantity. Additionally, let a node on the interior of
+$T$ be defined as $n_O$. The four nodes, $n_i, n_j, n_k, and n_O$ define
+three triangles, $T_i\left(n_i,n_j,n_0\right), T_j\left(n_j, n_k,
+n_0\right), T_k\left(n_k, n_i, n_0\right)$. If $A(T)$ is a function that
+calculates the area of a triangle in $\left(x,y,z\right)$ space, then
+the optimization problem for finding the optimal position for $n_0$ in
+$T$ can be stated as:
+
+\begin{eqnarray*}
+\begin{array}{rcl}
+\underset{n_O}{\text{minimize}} \ O(T) & = & -\left(A\left(T_i\right) + A\left(T_j\right) + A\left(T_k\right) \right) \\
+\text{subject to} \ N_{T_i} & > & 0 \\
+N_{T_j} & > & 0 \\ 
+N_{T_k} & > & 0 \\
+\end{array}
+\end{eqnarray*}
+
+It should be noted that this definition of representation deficit would be difficult to derive or express for a topological entity other than a triangle. This is due to the inherent ambiguity in the definition of not only the surface area, but also the surface representation of (possibly) non-planar elements, e.g. non-planar, or skew, quadrilateral. [MORE POSSIBLY]
+
+\subsubsection{Edge}
+An edge in parametric space represents a (possible) curve on the
+surface. Any edge, with length $L_E$, can have at most the same length
+as the portion of the surface which it represents, $L_S$. Therefore, the
+representation deficit for an edge, $RD_E$, can be defined as $RD_E =
+\frac{L_S - L_E}{L_E}$. Note that the lengths are calculated in
+${\mathbb R}^3$. The difference in length, $\left(L_S - L_E\right)$, is
+normalized by $L_E$ so that the result is scale independent. Also, this
+is a representation {\it deficit} since $L_S \ge L_E$ is always true;
+
+In order to apply the above definition of representation deficit to mesh
+generation, a replacement for $L_S$ must be determined since the area of
+the surface represented by $L_S$ is not always able to be determined --
+or, most often, the arc-length calculation is impractical.
+Generally, in order to reduce the representation deficit for an edge 
+the edge is split by inserting an interior point. Any point that is
+inserted into the interior of the edge would decrease the
+representation deficit --- or at worst it will remain the same. However,
+the determination of where to split the edge should be done in such
+a way that the representation deficit is minimized. This strategy of
+refinement, refining each edge in such a way that the representation
+deficit is locally minimized, would take advantage of the optimal
+substructure the discrete topology. A method for generating a locally
+optimal edge split is detailed in \cite{mclaurin12,mclaurin13}[OTHERS].
+
+In addition, the fact that and edge split will change the surface area
+of the discretization should be considered. Since the overall
+justification of this work is reduce the {\it area} representation
+deficit of a discretization, the representation deficit will not be
+defined for an edge but for an edge-split. Therefore, for a given edge,
+only the edge-split that minimizes representation deficit is considered.
+. The process of determining where to split a triangle is defined here
+by locally optimizing an objective function defined for an edge-split.
+Let $E\left(n_i,n_j\right)$ be an edge in $D$ that is shared
+topologically by two triangles, $T_i\left(n_i,n_j,n_k\right)$, and
+$T_j\left(n_i,n_l,n_j\right)$. Additionally, let a node on the interior
+of the edge be defined as $n_O$. The five nodes, $n_i,n_j,n_k,n_l,n_O$
+define four triangles, $T_a\left(n_i,n_O,n_k\right), T_b\left(n_O,n_j,
+n_k\right), T_c\left(n_i,n_l,n_O\right), T_d\left(n_O,n_l,n_j\right)$.
+The optimization problem for finding the optimal position for $n_O$ on
+$E$ can be stated as:
+
+\begin{eqnarray*}
+\begin{array}{rcl}
+\underset{n_O}{\text{minimize}} \ O(E) & = & -\left(A\left(T_a\right) + A\left(T_b\right) + A\left(T_c\right) A\left(T_d\right) \right) \\
+\text{subject to} \ N_{T_a} & > & 0 \\
+N_{T_b} & > & 0 \\ 
+N_{T_c} & > & 0 \\
+N_{T_d} & > & 0 \\
+\end{array}
+\end{eqnarray*}
+
+\subsubsection{Edge Flipping}
+Is it possible to have an optimal topology? If so, then it should be
+reachable through repeated edge flipping. Therefore, we should be able
+to write some sort of formulation for a pair of triangles and go from
+there? [SUZANNE] Comment: for the sake of not doing any more coding, if
+your ethics can let you come to the conclusion that this is either not
+possible or not practical then this would fit into the
+logic/justification in the next section.
+
+\subsubsection{Nodal Smoothing}
+For a node, $N_i$, the representation deficit can be defined only by
+comparing it to the node when located at another point in space. Here
+the comparison is bound by limiting the range of comparison within the
+edge-hull topologically adjacent to $N_i$. Formally, let $N_i$ be a node
+in $D$ that is shared topologically by $n$ triangles, where $n$ is the
+face-valence of $N_i$. The optimization for finding the optimal position
+for $N_i$ can be stated as:
+
+\begin{eqnarray*}
+\begin{array}{rcl}
+\underset{N_O}{\text{minimize}} \ O(N) & = &
+-\sum{_{j=1}^{n_t-1}A\left(T_j\right)} \\
+\text{subject to} \ N_{T_1} & > & 0 \\
+N_{T_2} & > & 0 \\ 
+N_{T_3} & > & 0 \\
+& \vdots & \\
+N_{T_{n-1}} & > & 0 \\ 
+N_{T_n} & > & 0
+\end{array}
+\end{eqnarray*}
+

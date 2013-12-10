@@ -1,0 +1,14 @@
+I need a parametric surface so that I can maintain a valid topology.
+Projection is not required since the topology gives me uv bounds. The
+mesh generation is going on in parametric space. There is an
+optimization function for creating the mesh in parametric space. Parametric
+space is also great for optimization since you can write the topology
+and optimization function constraints in uv space. Mapping a
+discretization to a surface in general involved the determination of
+``what'' an edge means on the surface---whether it's a geodesic line, or
+what... If you can do this that's great but the development of a map
+is not the purpose of this work so, for ease of presentation, a
+parametric surface is used.
+
+Consider an orientable, parameterized surface, $\vec{S}\left(u,v\right)
+: {\mathbb R}^2 \rightarrow {\mathbb R}^3$.

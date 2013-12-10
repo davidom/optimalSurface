@@ -1,9 +1,10 @@
 \documentclass[11pt]{article}
 
-\usepackage[top=2in, bottom=1.5in, left=1in, right=1in]{geometry}
+%\usepackage[top=2in, bottom=1.5in, left=1in, right=1in]{geometry}
+\usepackage{geometry}
 \usepackage{amssymb}
 \usepackage{algorithm}
-\usepackage{algpseudocode}
+% \usepackage{algpseudocode}
 \usepackage{amsmath}
 
 \begin{document}
@@ -12,6 +13,9 @@
 \input{Introduction}
 
 \section{Related Work}
+
+\section{Discretization Error, Discrete Curvature Approximation}
+[TALK HERE ABOUT HOW AN OSCULATING ELLIPSOID COULD BE FORMED BY CONSIDERING THE PRINCIPAL CURVATURES AT A POINT BUT THIS REQUIRES DERIVATIVES. ADDITIONALLY, FOR A TRIANGLE AND A GIVEN CANDIDATE POINT, THERE IS NOT ENOUGH INFORMATION TO DEFINE AN ELLIPSOID--ONLY A SPHERE. THEREFORE SOME ANALYSIS WITH AN OSCULATING SPHERE WOULD BE INSTRUCTIVE HERE]
 
 \section{Nomenclature and Definitions}
 \input{NomenclatureAndDefinitions}
@@ -29,6 +33,6 @@ SURE THAT IT NEEDS IT'S OWN SECTION
 
 \section{Acknowledgements}
 
-\bibliographystyle{ieeetr}
+\bibliographystyle{amsplain}
 \bibliography{References}
 \end{document}
