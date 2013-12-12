@@ -1,10 +1,13 @@
-The concept of representation deficit was discussed in \cite{mclaurin13} in the
-context of curve discretizations. Here, the concept will be extended to
-two dimensions. Representation deficit is defined for an operation:
+The concept of representation deficit was discussed in \cite{mclaurin13}
+in the context of scale-independent measure of curve discretizations.
+Here, the concept will be extended to two dimensions. It is important
+that any criteria for refinement maintain scale indepdence. This is so
+that the values for representation deficit can be compared between
+different candidate operations. Below, representation deficit is defined
+and discussed for four fundamental mesh operations: triangle split, edge
+split, edge swap, and node smoothing.
 
-[SCALE INDEPENDENCE]
-
-\subsubsection{Triangle}
+\subsubsection{Triangle Split}
 A triangle is a planar object, and is representing a possibly non-planar
 portion of a surface. Any triangle, with area $A_T$, in the
 discretization can have at most the same area as the portion of the
@@ -48,7 +51,7 @@ $T$ can be stated as:
 
 \begin{eqnarray*}
 \begin{array}{rcl}
-\underset{n_O}{\text{minimize}} \ O(T) & = & -\left(A\left(T_i\right) + A\left(T_j\right) + A\left(T_k\right) \right) \\
+\underset{n_O}{\text{minimize}} \ O(T) & = & -\left(A\left(T_i\right) + A\left(T_j\right) + A\left(T_k\right) \right) \cdot \left(A\left(T\right) \right)^{-1}\\
 \text{subject to} \ N_{T_i} & > & 0 \\
 N_{T_j} & > & 0 \\ 
 N_{T_k} & > & 0 \\
@@ -57,7 +60,7 @@ N_{T_k} & > & 0 \\
 
 It should be noted that this definition of representation deficit would be difficult to derive or express for a topological entity other than a triangle. This is due to the inherent ambiguity in the definition of not only the surface area, but also the surface representation of (possibly) non-planar elements, e.g. non-planar, or skew, quadrilateral. [MORE POSSIBLY]
 
-\subsubsection{Edge}
+\subsubsection{Edge Split}
 An edge in parametric space represents a (possible) curve on the
 surface. Any edge, with length $L_E$, can have at most the same length
 as the portion of the surface which it represents, $L_S$. Therefore, the
@@ -101,7 +104,7 @@ $E$ can be stated as:
 
 \begin{eqnarray*}
 \begin{array}{rcl}
-\underset{n_O}{\text{minimize}} \ O(E) & = & -\left(A\left(T_a\right) + A\left(T_b\right) + A\left(T_c\right) A\left(T_d\right) \right) \\
+\underset{n_O}{\text{minimize}} \ O(E) & = & -\left(A\left(T_a\right) + A\left(T_b\right) + A\left(T_c\right) + A\left(T_d\right) \right) \cdot \left(A\left(T_i\right) + A\left(T_j\right) \right)^{-1} \\
 \text{subject to} \ N_{T_a} & > & 0 \\
 N_{T_b} & > & 0 \\ 
 N_{T_c} & > & 0 \\
@@ -109,7 +112,9 @@ N_{T_d} & > & 0 \\
 \end{array}
 \end{eqnarray*}
 
-\subsubsection{Edge Flipping}
+In considering the edge swap operation it became apparent that the constraint of finding a candidate point, $P_c$, that topologically lies on the edge, $E$, is an ``implicit'' constraint. Is it required that $P_c$ lie on $E$ or should $P_c$ be allowed to be inserted where most appropriate in the hull formed by the two triangles topologically adjacent to $E$?. [DO I EVEN WANT TO MENTION THIS? THEN I'LL HAVE TO GET INTO, ``WELL WHY CONSTRAIN THE SEARCH TO ONLY TWO TRIANGLES? WHY NOT LET THE NODE TRAVEL UNTIL IT FINDS THE BEST PLACE?'' AND THEN I'D HAVE TO COMPARE METHODS AND MORE CODING... IT'S INTERESTING, BUT I DON'T THINK THERE'S ROOM HERE. PRACTICALLY, EDGE SPLITS ARE USUALLY NEEDED SINCE THE TRIA SPLITS AND RECONNECTIONS TAKE CARE OF MOSTLY EVERYTHING.]
+
+\subsubsection{Edge Swap}
 Is it possible to have an optimal topology? If so, then it should be
 reachable through repeated edge flipping. Therefore, we should be able
 to write some sort of formulation for a pair of triangles and go from
