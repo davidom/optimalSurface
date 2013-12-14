@@ -4,8 +4,10 @@
 \usepackage{geometry}
 \usepackage{amssymb}
 \usepackage{algorithm}
-% \usepackage{algpseudocode}
+\usepackage{algpseudocode}
 \usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{cleveref}
 
 \begin{document}
 
@@ -15,7 +17,8 @@
 \section{Related Work}
 
 \section{Discretization Error, Discrete Curvature Approximation}
-[TALK HERE ABOUT HOW AN OSCULATING ELLIPSOID COULD BE FORMED BY CONSIDERING THE PRINCIPAL CURVATURES AT A POINT BUT THIS REQUIRES DERIVATIVES. ADDITIONALLY, FOR A TRIANGLE AND A GIVEN CANDIDATE POINT, THERE IS NOT ENOUGH INFORMATION TO DEFINE AN ELLIPSOID--ONLY A SPHERE. THEREFORE SOME ANALYSIS WITH AN OSCULATING SPHERE WOULD BE INSTRUCTIVE HERE]
+\input{DiscretizationError}
+\input{DiscreteCurvatureApproximation}
 
 \section{Nomenclature and Definitions}
 \input{NomenclatureAndDefinitions}

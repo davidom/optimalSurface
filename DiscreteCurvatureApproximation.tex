@@ -1,0 +1,61 @@
+% Discrete Curvature Approximation
+\section{Discrete Curvature Approximation [UNDER HEAVY CONSTRUCTION]}
+The concept of ``deviation'' as defined above is relatively
+straightforward and intuitive. However, another related way of
+describing ``how well'' a \textit{discretization} represents a
+\textit{surface} is the degree to which the discrete representation
+approximates curvature -- where curvature is defined as the amount of
+``bend'' in a \textit{curve} or surface, or ``how much'' a
+\textit{curve} or surface ``differs'' from a straight line or plane
+(words in quotes are subject to gradation). First, however, curvature
+must be defined in such a way that a discrete approximation is
+meaningful and appropriate. In relevant literature, there are many ways
+to estimate curvature \cite{hermann07}. Some of it bears repeating,
+because it is germane to what is being discussed here: Consider the
+following surface, $S$, embedded in ${\mathbb R}^3$, at point P. The
+concept of an osculating circle does not generalize to higher dimensions
+and therefore cannot be used here as an approximation of curvature.
+Instead of determining a three-dimensional analog to an osculating
+circle for $S$, an osculating sphere can be defined for a triangle, $T$,
+contained in a discretization, $D$, which is approximating $S$.
+
+A value of curvature can be calculated for each triangle in the
+\textit{discretization} by considering the corresponding osculating
+sphere for a given triangle. The osculating sphere here (sphere,
+\Cref{fig:OsculatingCircle}) can be approximated by considering the
+circumscribed sphere (circumsphere) \cite{casey1888} defined by the
+three points of the triangle, $P_0$, $P_1$, and $P_2$, and a point, P on
+the surface located within the triangle in $(u,v)$ space.
+(\Cref{fig:CircumscribedCircle}) --- the radius of the circumsphere will
+be referred to as the discrete radius of curvature.  
+
+[REWORD BELOW HERE FOR A SPHERE]
+Consider a circular segment, which represents the \textit{curve} $s$.
+The corresponding chord, which represents a segment in the
+\textit{discretization}--$a$, and saggitta--which represents the
+``deviation'' of the segment away from the \textit{curve} $h$ is shown
+in \Cref{fig:CircleGeometry}.  
+
+[THEOREM AND PROOF ON OSCULATING SPHERE]
+
+Given the aforementioned proof, if the discrete curvature radius is
+divided by the length of the corresponding segment on the
+\textit{curve}, then it’s value approaches zero. This is a
+scale-independent measure that converges to a computer representable
+number as the \textit{discretization} approaches the length of the
+\textit{curve}. The parameter is known as the curvature ratio. It is an
+intuitive measure that relates ``how far'' the \textit{curve} deviates
+from the segment that is representing it as the ratio of those lengths.
+Consider a point on a \textit{curve} between two endpoints of a segment
+of a \textit{discretization}, as seen in \Cref{ref:CurvatureRatio}. The
+length of the segment, $L_i$, is the distance from $P_0$ to $P_1$. The
+perpendicular distance between the point on the \textit{curve} between
+the end points and the segment is $L_c$. The three points define a
+curvature ratio through the ratio of $L_c$ to $L_i$.
+
+
+ As shown in \cite{mclaurin12}, deviation-based methods are
+intuitive and straightforward to implement. However, drawbacks include
+the fundamental lack of consistently being able to indicate
+discretization accuracy for curves that are not ``well-behaved'' between
+discrete segments.
