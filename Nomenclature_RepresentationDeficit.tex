@@ -51,7 +51,7 @@ $T$ can be stated as:
 
 \begin{eqnarray*}
 \begin{array}{rcl}
-\underset{n_O}{\text{minimize}} \ O(T) & = & -\left(A\left(T_i\right) + A\left(T_j\right) + A\left(T_k\right) \right) \cdot \left(A\left(T\right) \right)^{-1}\\
+\underset{n_O}{\text{minimize}} \ O(T) & = & - \frac{A\left(T_i\right) + A\left(T_j\right) + A\left(T_k\right) }{ A\left(T\right) }\\
 \text{subject to} \ N_{T_i} & > & 0 \\
 N_{T_j} & > & 0 \\ 
 N_{T_k} & > & 0 \\
@@ -98,14 +98,14 @@ shared topologically by two triangles, $T_i\left(n_i,n_j,n_k\right)$,
 and $T_j\left(n_i,n_l,n_j\right)$. Additionally, let a node on the
 interior of the edge be defined as $n_O$. The five nodes,
 $\left\{n_i,n_j,n_k,n_l,n_O\right\}$ define four triangles,
-$T_a\left(n_i,n_O,n_k\right), T_b\left(n_O,n_j, n_k\right),
-T_c\left(n_i,n_l,n_O\right), T_d\left(n_O,n_l,n_j\right)$.  The
+$T_a\left(n_i,n_O,n_k\right)$, $T_b\left(n_O,n_j, n_k\right)$,
+$T_c\left(n_i,n_l,n_O\right)$, $T_d\left(n_O,n_l,n_j\right)$.  The
 optimization problem for finding the optimal position for $n_O$ on $E$
 can be stated as:
 
 \begin{eqnarray*}
 \begin{array}{rcl}
-\underset{n_O}{\text{minimize}} \ O(E) & = & -\left(A\left(T_a\right) + A\left(T_b\right) + A\left(T_c\right) + A\left(T_d\right) \right) \cdot \left(A\left(T_i\right) + A\left(T_j\right) \right)^{-1} \\
+\underset{n_O}{\text{minimize}} \ O(E) & = & - \frac{ A\left(T_a\right) + A\left(T_b\right) + A\left(T_c\right) + A\left(T_d\right) }{ A\left(T_i\right) + A\left(T_j\right) } \\
 \text{subject to} \ N_{T_a} & > & 0 \\
 N_{T_b} & > & 0 \\ 
 N_{T_c} & > & 0 \\
