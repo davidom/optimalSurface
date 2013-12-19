@@ -32,6 +32,12 @@ refinement, refining each triangle in such a way that the representation
 deficit is locally minimized, would take advantage of the optimal
 substructure the discrete topology.
 
+\begin{figure}[h!]
+  \center{\includegraphics[height=1.4in]
+    {Figures/TriangleSplit.png}}
+  \caption{Triangle Split}
+\end{figure}
+
 The process of determining where to split a triangle is defined here by
 a locally optimizing an objective function defined for a triangle: Let
 $S(u,v)$ be a parameterized surface, $D$ be be a discretization of the
@@ -84,6 +90,12 @@ refinement, refining each edge in such a way that the representation
 deficit is locally minimized, would take advantage of the optimal
 substructure of the discrete topology. A method for generating a locally
 optimal edge split is detailed in \cite{mclaurin12,mclaurin13}[OTHERS].
+
+\begin{figure}[h!]
+  \center{\includegraphics[height=1.4in]
+    {Figures/EdgeSplit.png}}
+  \caption{Edge Split}
+\end{figure}
 
 In addition, the fact that an edge split will change the surface area of
 the discretization should be considered. Since the overall justification
@@ -145,4 +157,11 @@ N_{T_{n-1}} & > & 0 \\
 N_{T_n} & > & 0
 \end{array}
 \end{eqnarray*}
+
+\begin{figure}[h!]
+  \center{\includegraphics[height=1.4in]
+    {Figures/NodalSmoothing.png}}
+  \caption{Nodal Smoothing}
+\end{figure}
+
 
