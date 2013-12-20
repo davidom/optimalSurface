@@ -1,18 +1,11 @@
-I need a parametric surface so that I can maintain a valid topology.
-Projection is not required since the topology gives me uv bounds. The
-mesh generation is going on in parametric space. There is an
-optimization function for creating the mesh in parametric space. Parametric
-space is also great for optimization since you can write the topology
-and optimization function constraints in uv space. Mapping a
-discretization to a surface in general involved the determination of
-``what'' an edge means on the surface---whether it's a geodesic line, or
-what... If you can do this that's great but the development of a map
-is not the purpose of this work so, for ease of presentation, a
-parametric surface is used.
-
-There's plenty of precedent for surface mesh generation in parameterized space. 
-
-The real justification for using a parameterization is that the formulation of constraints for representation deficit is straightforward. The search space for the local optimization problems is straightforward and intuitive to define--as well as efficient to search. However, if the surface mesh (in ${\mathbb R}^3$) were mapped to the surface...[SOMEHOW REMEMBER WHERE YOU WERE GOING AND FINISH THIS THOUGHT]
-
-Consider an orientable, parameterized surface, $\vec{S}\left(u,v\right)
-: {\mathbb R}^2 \rightarrow {\mathbb R}^3$.
+In the field of surface mesh generation there exists an overwhelming
+precedent for mapping physical space to parametric space and performing
+the actual mesh generation in parametric space [CITE]. This strategy has
+been proven to be efficient and accurate---with the assumption that the
+parameterization is of reasonable quality. Here, mesh generation in
+parametric space also enables the development of unambiguous
+optimization constrains and objective functions. The search space for
+the local optimization problem is straightforward and intuitive to
+define---as well as efficient to search. Therefore, this method will be
+developed for an orientable, parameterized surface,
+$\vec{S}\left(u,v\right) : {\mathbb R}^2 \rightarrow {\mathbb R}^3$
