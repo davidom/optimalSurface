@@ -1,38 +1,37 @@
 The accuracy, or discretization error, of a piecewise, linear
 representation of an analytical surface in ${\mathbb R}^3$ can be
 defined in many ways depending on the intended application. The error
-associated with with the discretization is discussed in terms of the
+associated with the discretization is discussed in terms of the
 deviation from the surface---most often quantified by calculating or
 approximating the distance from the surface for each linear entity
 (triangles and edges) in the discretization Another way of quantifying
-the error associated with a discretization would be to consider how well
+the error associated with a discretization is to consider how well
 it approximates the surface area of the surface it represents. In
-general the surface area is not known {\it a priori}, but depending on
-the underlying representation it can be calculated exactly ([EXAMPLE])
-or can be estimated ([EXAMPLE]).  One of the goals of the developed
-method was to be general, i.e. it should be independent of the
-underlying geometric representation.  Therefore, a method requiring the
-surface area of the underlying geometry violates the aforementioned
-concept of generality and restricts the applications for which the
-proposed method can be applied. Some other way of determining/generating
-a surface grid based on surface area is needed. This process will be
-detailed later.
+general the surface area is not known {\it a priori}; but depending on
+the underlying representation it can be calculated exactly or can be
+estimated. One of the goals of the developed method is to be general,
+i.e. it should be independent of the underlying geometric
+representation. Therefore, a method requiring the surface area of the
+underlying geometry violates the aforementioned concept of generality
+and restricts the applications for which the proposed method can be
+applied. Some other way of determining/generating a surface grid based
+on surface area is needed. This process is detailed later.
 
 The concept of deviation defined above is relatively straightforward and
 intuitive. However, another related way of describing how well a
 \textit{discretization} represents a \textit{surface} is the degree to
 which the discrete representation approximates curvature. First,
 however, curvature must be defined in such a way that a discrete
-approximation is meaningful and appropriate.  In relevant literature,
+approximation is meaningful and appropriate. In relevant literature,
 there are many ways to estimate surface curvature \cite{hermann07}. Some
 of it bears repeating, because it is germane to what is being discussed
 here: Consider a surface, $S$, embedded in ${\mathbb R}^3$, at point P.
 The concept of an osculating circle \cite{weissteineOsculatingCircle}
 does not generalize well to higher dimensions and therefore cannot be
-used here as an approximation of curvature.  Generally, a (hyper)surface
+used here as an approximation of curvature. Generally, a (hyper)surface
 does not have a (hyper)sphere that approximates curvature, but a
 (hyper)ellipsoid. This is because a surface can have multiple values and
-directions of curvature at a point.  Here, an osculating ellipsoid could
+directions of curvature at a point. Here, an osculating ellipsoid could
 be constructed by considering the principal curvature directions and
 surface normal at a given point on a surface. These three vectors are
 orthogonal and could be used to define the semi-axes of an ellipse. If
@@ -66,9 +65,8 @@ tetrahedron, ${\mathbb T}$ formed by $P_0$, $P_1$,$P_2$, and $P$. This
 is a meaningful comparison: as $R_D$ approaches infinity (as the
 distance between $P$ and the plane defined by $T$ approaches $P_0$) the
 surface area of ${\mathbb T}$ approaches two times the area of
-$T$[ELABORATE?].
-Stated another way, as $D$ is refined the surface area of $D$ approaches
-that of $S$.
+$T$[ELABORATE?].  Stated another way, as $D$ is refined the surface area
+of $D$ approaches that of $S$.
 
 Surface area convergence of a discretization is a sufficient condition
 for other schemes of surface grid generation/refinement. That is: if the
