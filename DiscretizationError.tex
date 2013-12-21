@@ -3,69 +3,73 @@ The accuracy, or discretization error, of a piecewise, linear
 representation of an analytical surface in ${\mathbb R}^3$ can be
 defined in many ways depending on the intended application. The error
 associated with with the discretization is discussed in terms of the
-``deviation'' from the surface---most often quantified by calculating or
+deviation from the surface---most often quantified by calculating or
 approximating the distance from the surface for each linear entity
-(triangles and edges) in the discretization, or some [AREA RELATED
-ERROR]. Another way of quantifying the error associated with a
-discretization would be to consider how well it approximates the surface
-area of the surface it represents. In general the surface area is not
-known {\it a priori}, but depending on the underlying representation it
-can be calculated exactly ([EXAMPLE]) or can be estimated ([EXAMPLE]).
-One of the goals of the developed method was to be ``general'' in that
-it should be independent of the underlying geometric representation.
-Therefore, a method that requires the surface area of the underlying
-geometry violates the aforementioned concept of ``generality'' and
-restricts the applications for which the proposed method could be
-applied. Some other way of determining/generating a surface grid based
-on surface area is needed. This process will be detailed later.
+(triangles and edges) in the discretization Another way of quantifying
+the error associated with a discretization would be to consider how well
+it approximates the surface area of the surface it represents. In
+general the surface area is not known {\it a priori}, but depending on
+the underlying representation it can be calculated exactly ([EXAMPLE])
+or can be estimated ([EXAMPLE]).  One of the goals of the developed
+method was to be general, i.e. it should be independent of the
+underlying geometric representation.  Therefore, a method requiring
+the surface area of the underlying geometry violates the
+aforementioned concept of ``generality'' and restricts the
+applications for which the proposed method can be applied. Some
+other way of determining/generating a surface grid based on surface
+area is needed. This process will be detailed later.
 
-The concept of ``deviation'' as defined above is relatively
-straightforward and intuitive. However, another related way of
-describing ``how well'' a \textit{discretization} represents a
-\textit{surface} is the degree to which the discrete representation
-approximates curvature -- where curvature is defined as the amount of
-``bend'' in a \textit{curve} or surface, or ``how much'' a
-\textit{curve} or surface ``differs'' from a straight line or plane
-(words in quotes are subject to gradation). First, however, curvature
-must be defined in such a way that a discrete approximation is
-meaningful and appropriate. In relevant literature, there are many ways
-to estimate surface curvature \cite{hermann07}. Some of it bears
-repeating, because it is germane to what is being discussed here:
-Consider the following surface, $S$, embedded in ${\mathbb R}^3$, at
-point P. The concept of an osculating circle [REFERENCE] does not
-generalize to higher dimensions and therefore cannot be used here as an
-approximation of curvature. An ``osculating ellipsoid'' could be
-constructed by considering the principal curvature directions and
-surface normal at a given point on a surface. However, this requires the
-computation or approximation of derivatives---which we have ruled out
-here.
+The concept of deviation defined above is relatively straightforward and
+intuitive. However, another related way of describing how well a
+\textit{discretization} represents a \textit{surface} is the degree to
+which the discrete representation approximates curvature. First,
+however, curvature must be defined in such a way that a discrete
+approximation is meaningful and appropriate.  In relevant literature,
+there are many ways to estimate surface curvature \cite{hermann07}. Some
+of it bears repeating, because it is germane to what is being discussed
+here: Consider a surface, $S$, embedded in ${\mathbb R}^3$, at point P.
+The concept of an osculating circle \cite{weissteineOsculatingCircle}
+does not generalize well to higher dimensions and therefore cannot be
+used here as an approximation of curvature.  Generally, a (hyper)surface
+does not have a (hyper)sphere that approximates curvature, but a
+(hyper)ellipsoid. This is because a surface can have multiple values and
+directions of curvature at a point.  Here, an osculating ellipsoid could
+be constructed by considering the principal curvature directions and
+surface normal at a given point on a surface. These three vectors are
+orthogonal and could be used to define the semi-axes of an ellipse. If
+some way could be found to determine a scale of the semi-axis associated
+with the surface normal (which is a unit-vector), this ellipse would be
+a good approximation of the surface in the direction of the principal
+curvatures. However, this requires the computation or approximation of
+derivatives---which we have ruled out here.
 
 Instead of determining a three-dimensional analog to an osculating
-circle for $S$, an ``osculating sphere'' could be defined for a
-triangle, $T$, contained in a discretization, $D$, which is
-approximating $S$. A value of curvature can be calculated for each
-triangle in the $D$ by considering the corresponding osculating sphere
-for $T$. The osculating sphere here (sphere,[FIGURE]) can be
-approximated by considering the circumscribed sphere (circumsphere)
-\cite{casey1888} defined by the three points of the triangle, $P_0$,
-$P_1$, and $P_2$, and a point, $P$ on the surface located within the
-triangle in $(u,v)$ space. --- the radius of the circumsphere will be
-referred to as the discrete radius of curvature, $R_D$. This argument
-for curvature approximation is a two-dimensional analog to the one in
-[CITE SELF] for approximating curvature along a curve. In that work, the
-authors showed that for an edge on a curve, as the radius of curvature
-of the osculating circle approaches infinity the arc length of the
-circular segment approaches the arc length of the edge. However, here as
-$R_D$ approaches infinity, the surface area of the spherical cap does
-not approach the area of $T$---it approaches that of the circumscribed
-circle defined by $T$.
+circle for $S$, an osculating sphere could be defined for a triangle,
+$T$, contained in a discretization, $D$, which is approximating $S$. A
+value of curvature can be calculated for each triangle in the $D$ by
+considering the corresponding osculating sphere for $T$. The osculating
+sphere here (sphere,[FIGURE]) can be approximated by considering the
+circumscribed sphere (circumsphere) \cite{casey1888} defined by the
+three points of the triangle, $P_0$, $P_1$, and $P_2$, and a point, $P$
+on the surface located within the triangle in $(u,v)$ space. --- the
+radius of the circumsphere will be referred to as the discrete radius of
+curvature, $R_D$. This argument for curvature approximation is a
+two-dimensional analog to the one in \cite{mclaurin12} for approximating
+curvature along a curve. In that work, the authors showed that for an
+edge on a curve, as the radius of curvature of the osculating circle
+approaches infinity the arc length of the circular segment approaches
+the arc length of the edge. However, here as $R_D$ approaches infinity,
+the surface area of the spherical cap does not approach the area of
+$T$---it approaches that of the circumscribed circle defined by $T$.
 
 Finally, what is most appropriate is to consider the surface area of the
-tetrahedron, ${\mathbb T}$ formed by $P_0$, $P_1$,$P_2$, and $P$. This is a meaningful
-comparison: as $R_D$ approaches infinity (as the distance between $P$
-and the plane defined by $T$ approaches $0$) the surface area of
-${\mathbb T}$ approaches two times the area of $T$. Stated another way,
-  as $D$ is refined the surface area of $D$ approaches that of $S$.
+tetrahedron, ${\mathbb T}$ formed by $P_0$, $P_1$,$P_2$, and $P$. This
+is a meaningful comparison: as $R_D$ approaches infinity (as the
+distance between $P$ and the plane defined by $T$ approaches $P_0$) the
+surface area of ${\mathbb T}$ approaches two times the area of
+$T$[ELABORATE?].
+Stated another way, as $D$ is refined the surface area of $D$ approaches
+that of $S$.
 
 Surface area convergence of a discretization is a sufficient condition
 for other schemes of surface grid generation/refinement. That is: if the
@@ -77,5 +81,5 @@ angles between segments approaches $0$ degrees [see PROOF once
 definition of REPRESENTATION DEFICIT is detailed in APPENDIX]. However,
 the converse of that statement is not true. The pathological case of a
 highly oscillatory, low amplitude surface approximated by two triangles
-[MORE DETAIL] can have a small ``deviation'' or angles between elements
+[MORE DETAIL] can have a small deviation or angles between elements
 but be a poor estimate for surface area.
