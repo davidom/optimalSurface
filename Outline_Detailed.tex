@@ -6,7 +6,14 @@
 \section{Introduction}
 \section{Related Work}
 \section{Clarification on Mesh Refinement}
-Very few algorithms are true mesh generation, in the sense that most refine some initial discretization based on a priori error estimates [REFERENCES]. This approach, historically and in a modern sense, have been spectacularly successful in their efforts to produce high quality meshes for computational simulation. This work, however, seeks to explore the concept of optimal mesh representation instead of optimal mesh quality. In other words, what is an optimal representation and how can it be generated?
+Very few algorithms are true mesh generation, in the sense that most
+refine some initial discretization based on a priori error estimates
+[REFERENCES]. This approach, historically and in a modern sense, has
+been spectacularly successful in their efforts to produce high quality
+meshes for computational simulation. This work, however, seeks to
+explore the concept of optimal mesh representation instead of optimal
+mesh quality. In other words, what is an optimal representation and how
+can it be generated?
 
 The word ``optimal'' carries with it many meanings depending on the application or context. Here, optimal will be discussed in terms of representation. Consider a continuous, parameterized surface $S$, and corresponding discrete representation, $D$. In order to generate $D$, some original discretization, $D_i$, (usually coarse) will be created and then systematically refined to create the final discretization, $D_f$. The final discretization, $D_f$ approximates $S$ to an acceptable degree--but is still an approximation. This work seeks to defined discretization error of a surface grid with respect to an underlying geometrical representation. In addition, an analysis of the refinement process and a formally definition of each of the [common/fundamental/atomic] operations will be explored.
 
