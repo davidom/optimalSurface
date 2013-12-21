@@ -1,15 +1,13 @@
 Consider a discretization, $D$, defined on $S$, comprised of $n_p$
 points, $P \in \left\{p_1,...,p_{n_p} \right\}$, and a non-overlapping,
-non-degenerate, consistently oriented, triangular connectivity $T \in
-\left\{t_1,...,t_{n_t} \right\}$. Each triangle in $T$, $t_i$, is
-defined by points $\left(p_j, p_k, p_m\right)$, and edges $\left(e_n,
-e_o, e_p\right)$---where the edges are defined (for $t_i$) as $e_n
-\left(p_j, p_k\right)$, $e_o \left(p_k, p_m\right)$, $e_p \left(p_m,
-p_j\right)$. For the purposes of defining an edge in this work, the
-ordering of the nodes does not matter. However, the ordering of the
-triangle connectivity (sometimes referred to as winding) is used to
-maintain consistent orientation during topological operations and to
-define constraints in the developed optimization strategy.
+non-degenerate, consistently oriented, conformal, triangular
+connectivity $T \in \left\{t_1,...,t_{n_t} \right\}$. Each triangle in
+$T$, $t_i$, is defined by points $\left(p_j, p_k, p_m\right)$, and edges
+$\left(e_n, e_o, e_p\right)$---where the edges are defined. For the purposes of
+defining an edge in this work, the ordering of the nodes does not matter.
+However, the ordering of the triangle connectivity (sometimes referred to as
+winding) is used to maintain consistent orientation during topological
+operations and to define constraints in the developed optimization strategy.
 
 Each point, $p_i$, in $D$ is defined at a $\left(u,v\right)_i$
 coordinate, and an edge is a straight line in both parametric space and in

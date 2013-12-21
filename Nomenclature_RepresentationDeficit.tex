@@ -77,19 +77,19 @@ normalized by $L_E$ so that the result is scale independent. Also, this
 is a representation {\it deficit} since $L_S \ge L_E$ is always true;
 
 In order to apply the above definition of representation deficit to mesh
-generation, a replacement for $L_S$ must be determined since the area of
-the surface represented by $L_S$ is not always able to be determined --
-or, most often, the arc-length calculation is impractical.
-Generally, in order to reduce the representation deficit for an edge 
-the edge is split by inserting an interior point. Any point that is
-inserted into the interior of the edge would decrease the
-representation deficit --- or at worst it will remain the same. However,
-the determination of where to split the edge should be done in such
-a way that the representation deficit is minimized. This strategy of
-refinement, refining each edge in such a way that the representation
-deficit is locally minimized, would take advantage of the optimal
-substructure of the discrete topology. A method for generating a locally
-optimal edge split is detailed in \cite{mclaurin12,mclaurin13}[OTHERS].
+generation, a replacement for $L_S$ must be determined since the length
+along the surface represented by $L_S$ is not always able to be
+determined -- or, most often, the arc-length calculation is impractical.
+Generally, in order to reduce the representation deficit for an edge the
+edge is split by inserting an interior point. Any point that is inserted
+into the interior of the edge would decrease the representation deficit
+--- or at worst it will remain the same. However, the determination of
+where to split the edge should be done in such a way that the
+representation deficit is minimized. This strategy of refinement,
+refining each edge in such a way that the representation deficit is
+locally minimized, would take advantage of the optimal substructure of
+the discrete topology. A method for generating a locally optimal edge
+split is detailed in \cite{mclaurin12,mclaurin13}[OTHERS].
 
 \begin{figure}[h!]
   \center{\includegraphics[height=1.4in]
@@ -106,7 +106,7 @@ edge-split that minimizes {\it area} representation deficit is
 considered.  . The process of determining where to split a triangle is
 defined here by locally optimizing an objective function defined for an
 edge-split.  Let $E\left(n_i,n_j\right)$ be an edge in $D$ that is
-shared topologically by two triangles, $T_i\left(n_i,n_j,n_k\right)$,
+topologically adjacent to two triangles, $T_i\left(n_i,n_j,n_k\right)$,
 and $T_j\left(n_i,n_l,n_j\right)$. Additionally, let a node on the
 interior of the edge be defined as $n_O$. The five nodes,
 $\left\{n_i,n_j,n_k,n_l,n_O\right\}$ define four triangles,
