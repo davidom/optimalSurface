@@ -12,20 +12,20 @@ desired level of accuracy. However, element quality should be secondary
 to accurately representing the underlying physical object or phenomenon.
 
 The justification for the development of these methods was to explore
-the concept of optimal mesh refinement, and subsequently optimal
-representation, through the development of a formal description of
-fundamental mesh operations. These mesh operations (triangle split, edge
- split, edge collapse, edge swap, and vertex smoothing) were
-developed with respect to optimal representation of a discrete element
+the concept of optimal mesh generation through mesh refinement, and
+subsequently optimal representation, by developing a formal description
+of fundamental mesh operations. These mesh operations (triangle split,
+edge split, edge collapse, edge swap, and vertex smoothing) were
+formulated with respect to optimal representation of a discrete element
 for a continuous, parameterized surface. The proposed algorithm is a
-general-use method that can be applied to any ``digital surface''
-regardless of its representation. This is due to every step being
-developed without the use of derivatives. Most other methods operate on
-a specific type of surface geometry, e.g. NURBS surfaces, and use the
-specific information available for the type of surface in use.
-[TRANSITION SENTENCE] A result of not using derivatives is that each
-step in the algorithm is robust to large changes in derivatives or
-curves that are not ``well behaved'', e.g. they were highly oscillatory.
+general-use method that can be applied to any surface regardless of its
+representation. This is due to every step being developed without the
+use of derivatives. A result of not using derivatives is that each step
+in the algorithm is robust to large or discontinuous changes in
+derivatives. Most other methods operate on a specific type of surface
+geometry, e.g. NURBS surfaces, and use the specific information
+available for the type of surface in use.
+[TRANSITION SENTENCE] 
 
 This process can only be automated if some way of judging ``how well'' a
 surface grid represents a surface is present. To this end, a method of
@@ -34,14 +34,3 @@ detailed below. The concept of discrete element quality is also defined
 with respect to optimal representation. The above concepts are
 contrasted with traditional methods for grid generation through direct
 comparison of representation optimality and efficiency.
-
-
-
-%NURBS surfaces are one of, if not {\it the}, de-facto
-%standard in CAD; however, in other fields, such as pattern recognition,
-%other types of digital surfaces, such as parametric, are more common
-%[CITE]. T-splines are also becoming more popular in isogeometric
-%analysis, for example, [CITE].
-%Therefore, a general algorithm that
-%does not require derivative information to generate a suitable surface
-%grid has been developed. 
