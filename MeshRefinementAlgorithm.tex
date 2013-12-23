@@ -3,9 +3,8 @@ based on representation deficit refinement:
 
 \subsection{Algorithm Specification}
 \begin{algorithm}[H]
-\caption{Iterative Refinement}
 \begin{algorithmic}
-% Find the optimal point for triangle splitting
+\caption{Find optimal point for triangle splitting}
 \Procedure{findOptimalPoint}{$t_i$} \Comment{for Triangle}
   \State $pattern \gets sizePattern\left( t_i \right)$
   \State $pattern \gets calculateTrianglePatternValues\left( t_i \right)$
@@ -19,9 +18,11 @@ based on representation deficit refinement:
   \State $return \gets \left( p_i, minValue \right)$
 \EndProcedure
 \end{algorithmic}
+\end{algorithm}
 
+\begin{algorithm}[H]
 \begin{algorithmic}
-% Find the optimal point for edge splitting
+\caption{Find optimal point for edge splitting}
 \Procedure{findOptimalPoint}{$e_i$} \Comment{for Edge}
   \State $pattern \gets sizePattern\left( e_i \right)$
   \State $pattern \gets calculateEdgePatternValues\left( e_i \right)$
@@ -35,7 +36,10 @@ based on representation deficit refinement:
   \State $return \gets \left( p_i, minValue \right)$
 \EndProcedure
 \end{algorithmic}
+\end{algorithm}
 
+\begin{algorithm}[H]
+\caption{Iterative Refinement}
 \begin{algorithmic}
 \Procedure{TriangleRefine}{$T$, $tol_{RD}$} \Comment{Refine the triangulation, $T$}
   \For{each triangle, $t_i$}
@@ -56,9 +60,8 @@ based on representation deficit refinement:
 \end{algorithm}
 
 \begin{algorithm}
-\caption{Nodal Smoothing}
 \begin{algorithmic}
-% Find the optimal point for node relocation
+\caption{Find the optimal point for node relocation}
 \Procedure{findOptimalPoint}{$n_i$} \Comment{for Node}
   \State $pattern \gets sizePattern\left( n_i \right)$
   \State $pattern \gets calculateNodePatternValues\left( n_i \right)$
@@ -72,8 +75,11 @@ based on representation deficit refinement:
   \State $return \gets \left( p_i, minValue \right)$
 \EndProcedure
 \end{algorithmic}
-\begin{algorithmic}
+\end{algorithm}
 
+\begin{algorithm}[H]
+\caption{Nodal Smoothing}
+\begin{algorithmic}
 \Procedure{NodalSmooth}{$T$, $tol_{RD}$} \Comment{Smooth Node Positions}
   \For{each node, $n_i$}
     \State $pattern \gets sizePattern\left( e_i \right)$
