@@ -1,41 +1,15 @@
-Most mesh generation algorithms refine an initial discretization based on
-a priori error estimates [EXAMPLE REFERENCES]. This approach,
-historically and in a modern sense, has been spectacularly successful in
-their efforts to produce high quality meshes for computation simulation.
-Aforementioned mesh generation strategies focus on element quality ---
-with the justification being that downstream applications require high
-quality geometries in order to achieve a desired level of accuracy.
-However, element quality should be secondary to accurately representing
-the underlying physical object or phenomenon.  This work seeks to
-explore the concept of optimal mesh representation instead of optimal
-mesh quality.
-
-Here a formal definition of fundamental mesh operations (triangle split,
-edge split, edge collapse, and vertex smoothing) is developed with
-respect to optimal representation for a continuous, parameterized
-surface. The proposed algorithm is a general-use method that can be
-applied to any surface regardless of its representation. This is due to
-every step being developed without the use of derivatives. A result of
-not using derivatives is that each step in the algorithm is robust to
-large or discontinuous changes in derivatives.
-
-This process can only be automated if some way of judging ``how well'' a
-surface grid represents a surface is present. To this end, a method of
-generating surface grids through constrained, local optimization is
-detailed below. The above concepts are contrasted with traditional
-methods for grid generation through direct comparison of representation
-optimality and efficiency. Further discussion of robustness and mesh
-quality is also presented.
-
-In general, grid generation is a name for any process that creates a
-grid. For example, the advancing-front algorithm advances boundaries
-into space to generate a grid \cite{tristrano98, diaz-morcillo98}[CITE].
-Other methods generate grids from iterative refinement or enrichment
-from initial, coarse configurations \cite{marcum98, marcum00,
-shewchuk02}[CITE]. Usually the benchmark for separating the two
-methods, generation and refinement, are the prioritization of grid
-quality and grid accuracy (both of these issues will be addressed
-later).
+This work seeks to explore the concept of optimal mesh representation.
+Most mesh generation algorithms refine an initial discretization based
+on {\it a priori} error estimates or quality metrics. For example, the
+advancing-front algorithm advances boundaries into space to generate a
+grid \cite{tristrano98, diaz-morcillo98}[CITE]. Other methods generate
+grids from iterative refinement or enrichment from initial, coarse
+configurations \cite{marcum98, marcum00, shewchuk02}[CITE]. These mesh
+generation strategies focus on element quality---with the
+justification being that downstream applications require high quality
+geometries in order to achieve a desired level of accuracy. These
+approaches, historically and in a modern sense, has been spectacularly
+successful at producing high quality meshes for computation simulation.
 
 Traditionally, surface grid generation processes produce good quality
 grids from the combination of geometric growth rates and smoothing.
@@ -46,10 +20,26 @@ generation process, but instead implies that the final grid is heavily
 dependent on the inputs. In addition, if some way of controlling the
 point spacing in the middle of the surface (away from the boundaries) is
 not present, then more points could be wasted/omitted in an attempt to
-accurately represent the geometry.
+accurately represent the geometry. Efforts have gone into
+creating a locally or globally optimal surface grid. For example,
+curvature is a common driver of surface mesh adaptation or refinement
+\cite{siqueria13}. Interpolation error, given a desired function, has
+is also ubiquitous [ADJOINT, HESSIAN, METRIC, GOAL-ORIENTED]\cite{}.
 
-Other efforts have gone into creating a locally or globally optimal
-surface grid. Many names have been assigned to the particular task, but
-the underlying goal is very similar --- represent a surface as
-accurately as possible. For example, [CITE, EXPLAIN, CITE, EXPLAIN,
-CITE, EXPLAIN]
+The work presented here is contrasted with the above work in that only
+the degree in which the discretization approximates the geometry is
+considered.  Here a formal definition of fundamental mesh operations
+(triangle split, edge split, edge collapse, and vertex smoothing) is
+developed with respect to optimal representation for a continuous,
+parameterized surface. The proposed algorithm is a general-use method
+that can be applied to any surface regardless of its representation.
+This is due to every step being developed without the use of
+derivatives. A result of not using derivatives is that each step in the
+algorithm is robust to large or discontinuous changes in derivatives.
+
+This process can only be automated if some way of judging ``how well'' a
+surface grid represents a surface is present. To this end, a method of
+generating surface grids through constrained, local optimization is
+detailed below. Results for mesh representation and efficiency are also
+given and discussed. Further discussion of robustness and mesh quality
+is also presented.
