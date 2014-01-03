@@ -4,18 +4,24 @@ defined in many ways depending on the intended application. The error
 associated with the discretization is discussed in terms of the
 deviation from the surface---most often quantified by calculating or
 approximating the distance from the surface for each linear entity
-(triangles and edges) in the discretization Another way of quantifying
+(triangles and edges) in the discretization.  Another way of quantifying
 the error associated with a discretization is to consider how well
-it approximates the surface area of the surface it represents. In
-general the surface area is not known {\it a priori}; but depending on
-the underlying representation it can be calculated exactly or can be
-estimated. One of the goals of the developed method is to be general,
-i.e. it should be independent of the underlying geometric
-representation. Therefore, a method requiring the surface area of the
-underlying geometry violates the aforementioned concept of generality
-and restricts the applications for which the proposed method can be
-applied. Some other way of determining/generating a surface grid based
-on surface area is needed. This process is detailed later.
+it approximates the surface area of the surface it represents.  In
+general, the surface area is not known {\it a priori}; however, for some
+surfaces, depending on the underlying representation, it can be 
+calculated exactly via computation of a double integral or estimated using 
+numerical cubature.  In other cases, such as when the surface is very 
+irregular or rough, it is not always possible to assign a surface area
+without a generalization of the concept from geometric measure 
+theory~\cite{gmt}.  Two goals of the developed 
+method is that it be general, i.e., it 
+should be independent of the underlying geometric representation, and 
+practical.  Therefore, a method requiring the surface area of the 
+underlying geometry violates the aforementioned concept of 
+generality and restricts the applications for which the proposed method 
+can be applied and hence is impractical.  Another way of 
+determining/generating a surface grid based on surface area is needed. 
+This process is detailed later.
 
 The concept of deviation defined above is relatively straightforward and
 intuitive. However, another related way of describing how well a
