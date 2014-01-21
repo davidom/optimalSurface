@@ -13,8 +13,8 @@ usually meant that the nearby minimum was either on the edge or on the
 other topological side of the edge. Without some sort of intervention,
 this would lead to nearly degenerate geometry being formed. In order to
 prevent geometry which could cause numerical robustness issues, when a
-node neared an edge the edge was flipped. This allowed the node to move
-unobstructed by the newly-reconnected edge.
+node neared an edge during node movement the edge was flipped. This
+allowed the node to move unobstructed by the newly-reconnected edge.
 
 The criteria for determining if a node is ``too close'' to an edge is
 based on the size of the pattern[CLARIFY]. If the minimum value for the
