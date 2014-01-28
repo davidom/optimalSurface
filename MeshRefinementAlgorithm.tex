@@ -40,6 +40,7 @@ based on representation deficit refinement:
 
 \begin{algorithm}[H]
 \caption{Iterative Refinement}
+\label{alg_IterativeRefinement}
 \begin{algorithmic}
 \Procedure{TriangleRefine}{$T$, $tol_{RD}$} \Comment{Refine the triangulation, $T$}
   \For{each triangle, $t_i$}
@@ -62,6 +63,7 @@ based on representation deficit refinement:
 \begin{algorithm}
 \begin{algorithmic}
 \caption{Find the optimal point for node relocation}
+\label{alg_NodeSmoothing}
 \Procedure{findOptimalPoint}{$n_i$} \Comment{for Node}
   \State $pattern \gets sizePattern\left( n_i \right)$
   \State $pattern \gets calculateNodePatternValues\left( n_i \right)$
