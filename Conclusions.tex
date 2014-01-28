@@ -1,19 +1,28 @@
-{\bf{Dave:  Please write some conclusions here.}}
+In this work, the concept of optimal mesh refinement was explored. This
+was done through the development of a formal definition for three
+fundamental mesh operations, triangle split, edge split, and node
+movement; each with respect to the concept of {\it representation
+deficit}. Results were given showing this methodology to be an effective
+method for mesh refinement. The most effective method was found to be a
+combination of the above three fundamental mesh operations and delaunay
+local reconnection. The representation is also efficient in that the
+interior of the domain was not overly refined in order to achieve the
+desired surface representation.
 
-{\bf{Dave:  The future work part of this section starts here.}} There are 
-several possible directions for future work.  One avenue for future work 
-is to further improve the optimization algorithm in the following two 
-ways.  First, optimization could be employed in the determination of which 
-mesh operation to perform at each stage of the optimization procedure.  
-Second, the objective function could be modified in order to generate 
-surface meshes that simultaneously minimize the representation deficit and 
-optimize the mesh quality.  Another possibility for future research would 
-be to extend the surface mesh generation algorithm to handle the volume 
-mesh generation case so that a hierarchical approach for mesh generation 
-(i.e., edge grid~\cite{mclaurin13} $\mapsto$ surface 
-mesh~\cite{mclaurin14} $\mapsto$ volume mesh) could be employed. This 
-would allow for optimization of each stage of the mesh generation 
-procedure.  Finally, parallelization of the algorithm would allow for 
-optimal generation of very large surface meshes such as those required by 
-{\bf{Dave:  Cite a ``killer'' engineering application here.}} 
-applications.
+\subsection{Future Work}
+There are several possible directions for future work.  One avenue for
+future work is to further improve the optimization algorithm in the
+following two ways.  First, optimization could be employed in the
+determination of which mesh operation to perform at each stage of the
+optimization procedure.  Second, the objective function could be
+modified in order to generate surface meshes that simultaneously
+minimize the representation deficit and optimize the mesh quality.
+Another possibility for future research would be to extend the surface
+mesh generation algorithm to handle the volume mesh generation case so
+that a hierarchical approach for mesh generation (i.e., edge
+grid~\cite{mclaurin13} $\mapsto$ surface mesh~\cite{mclaurin14}
+$\mapsto$ volume mesh) could be employed. This would allow for
+optimization of each stage of the mesh generation procedure.  Finally,
+parallelization of the algorithm would allow for optimal generation of
+very large surface meshes such as those required by {\bf{Dave:  Cite a
+``killer'' engineering application here.}} applications.

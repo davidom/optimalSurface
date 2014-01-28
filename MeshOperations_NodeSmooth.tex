@@ -1,13 +1,5 @@
-% NOTE:  I suggestion we rename this subsection.  Whenever optimization is 
-%   used, the term smoothing is no longer used, as smoothing can lead
-%   to a decrease in the metric being measured.  With mesh quality, the 
-%   appropriate term is mesh quality improvement.  I would have used the 
-%   term mesh representation deficit improvement here.  However, since
-%   this is a subsection and all subsection titles should be parallel,
-%   that doesn't quite work either.  Can you think of a better title?
-
-\subsection{Nodal Smoothing}
-In this paper, the focus is on using nodal smoothing in 
+\subsection{Nodal Movement}
+In this paper, the focus is on using nodal movement in 
 order to locally minimize the representation deficit in the surface mesh.  
 It should be noted that, although a locally optimal mesh topology could 
 also be obtained, computing such a topology would involve the solution of 
@@ -41,10 +33,10 @@ N_{T_n} & > & 0.
 \begin{figure}[h!]
   \center{\includegraphics[height=1.4in]
     {Figures/NodalSmoothing.jpg}}
-  \caption{Nodal Smoothing}
+  \caption{Nodal Movement}
 \end{figure}
 
 %[NEED TO DISCUSS HESSIAN/METRIC BASED MESH ADAPTION IN THE NODAL
-%SMOOTHING SECTION OF THE PAPER. THERE IS NO GLOBAL, STATIC FUNCTION
+%SMOOTHING SECTION OF THE PAPER? THERE IS NO GLOBAL, STATIC FUNCTION
 %AGAINST WHICH THE INTERPOLATION ERROR CAN BE MINIMIZED. THAT IS,
 %WHENEVER THE MESH MOVES, THE INTERPOLATION ERROR FIELD CHANGES.]
