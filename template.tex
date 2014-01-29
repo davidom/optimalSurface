@@ -1,0 +1,160 @@
+%%%%%%%%%%%%%%%%%%%%%%% file template.tex %%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This is a general template file for the LaTeX package SVJour3
+% for Springer journals.          Springer Heidelberg 2010/09/16
+%
+% Copy it to a new file with a new name and use it as the basis
+% for your article. Delete % signs as needed.
+%
+% This template includes a few options for different layouts and
+% content for various journals. Please consult a previous issue of
+% your journal as needed.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+\RequirePackage{fix-cm}
+%
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+%
+\smartqed  % flush right qed marks, e.g. at end of proof
+%
+\usepackage{graphicx}
+%
+% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
+%
+% insert here the call for the packages your document requires
+\usepackage{latexsym}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+%\usepackage{cleveref}
+\usepackage{url}
+\usepackage{subfig}
+% etc.
+%
+% please place your own definitions here and don't use \def but
+% \newcommand{}{}
+%
+% Insert the name of "your journal" with
+\journalname{myjournal}
+%
+\begin{document}
+
+\title{Representation Deficit Based Optimal Surface Mesh Generation
+\thanks{The work of the second author is supported in part by NSF CAREER grant ACI-1330056 (formerly ACI-1054459)}
+}
+%\titlerunning{Short form of title}        % if too long for running head
+
+\author{
+  David O. McLaurin \and
+  Suzanne M. Shontz
+}
+
+%\authorrunning{Short form of author list} % if too long for running head
+
+\institute{David O. McLaurin \at
+           10800 Pecan Park Blvd. \\
+           Austin, TX 78750 \\
+           Tel.: +1 512-331-2808 \\
+           Fax: +1 512-258-5938 \\
+           \email{david.mclaurin@cd-adapco.com}           %  \\
+           \and
+           Suzanne M. Shontz \at
+              second address
+}
+
+\date{Received: date / Accepted: date}
+% The correct dates will be entered by the editor
+
+\maketitle
+
+\begin{abstract}
+Insert your abstract here. Include keywords, PACS and mathematical
+subject classification numbers as needed.
+\keywords{First keyword \and Second keyword \and More}
+% \PACS{PACS code1 \and PACS code2 \and more}
+% \subclass{MSC code1 \and MSC code2 \and more}
+\end{abstract}
+
+\section{Introduction}
+\input{Introduction}
+
+\section{Nomenclature and Definitions}
+\input{NomenclatureAndDefinitions}
+
+\section{Discretization Error, Discrete Curvature Approximation}
+\input{DiscretizationError}
+
+\section{Representation Deficit based Mesh Operations}
+\input{FundamentalMeshOperations}
+
+\section{Mesh Refinement Algorithm}
+\input{OptimalSubstructureVsGlobalOptimization}
+
+\input{MeshRefinementAlgorithmSection}
+
+\section{Results}
+\input{Results}
+
+\section{Conclusions}
+\input{Conclusions}
+
+\iffalse
+% For one-column wide figures use
+\begin{figure}
+% Use the relevant command to insert your figure file.
+% For example, with the graphicx package use
+  \includegraphics{example.eps}
+% figure caption is below the figure
+\caption{Please write your figure caption here}
+\label{fig:1}       % Give a unique label
+\end{figure}
+%
+% For two-column wide figures use
+\begin{figure*}
+% Use the relevant command to insert your figure file.
+% For example, with the graphicx package use
+  \includegraphics[width=0.75\textwidth]{example.eps}
+% figure caption is below the figure
+\caption{Please write your figure caption here}
+\label{fig:2}       % Give a unique label
+\end{figure*}
+%
+% For tables use
+\begin{table}
+% table caption is above the table
+\caption{Please write your table caption here}
+\label{tab:1}       % Give a unique label
+% For LaTeX tables use
+\begin{tabular}{lll}
+\hline\noalign{\smallskip}
+first & second & third  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+number & number & number \\
+number & number & number \\
+\noalign{\smallskip}\hline
+\end{tabular}
+\end{table}
+\fi
+
+%\begin{acknowledgements}
+%If you'd like to thank anyone, place your comments here
+%and remove the percent signs.
+%\end{acknowledgements}
+
+% BibTeX users please use one of
+%\bibliographystyle{spbasic}      % basic style, author-year citations
+\bibliographystyle{spmpsci}      % mathematics and physical sciences
+%\bibliographystyle{spphys}       % APS-like style for physics
+\bibliography{References}   % name your BibTeX data base
+
+\end{document}
+% end of file template.tex
+

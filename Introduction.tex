@@ -2,9 +2,9 @@ This work seeks to explore the concept of optimal mesh representation.
 Most mesh generation algorithms refine an initial discretization based
 on {\it a priori} error estimates or quality metrics. For example, the
 advancing-front algorithm advances boundaries into space to generate a
-grid \cite{tristrano98, diaz-morcillo98}. Other methods generate
+grid \cite{tristrano98,diaz-morcillo98}. Other methods generate
 grids from iterative refinement or enrichment from initial, coarse
-configurations \cite{marcum98, marcum00, shewchuk02}. These mesh
+configurations \cite{marcum98,marcum00,shewchuk02}. These mesh
 generation strategies focus on element quality---with the
 justification being that downstream applications require high quality
 geometries in order to achieve a desired level of accuracy. These
@@ -24,7 +24,7 @@ accurately represent the geometry. Efforts have gone into
 creating a locally or globally optimal surface grid. For example,
 curvature is a common driver of surface mesh adaptation or refinement
 \cite{siqueria13}. Interpolation error, given a desired function, 
-is also ubiquitous \cite{peraire87, alauzet06, buscaglia97, huang05}.
+is also ubiquitous \cite{peraire87,alauzet06,buscaglia97,huang05}.
 
 The work presented here is contrasted with the above work in that only
 the degree in which the discretization approximates the geometry is
@@ -44,10 +44,9 @@ detailed below. Results for mesh representation and efficiency are also
 given and discussed.  Further discussion of robustness and mesh quality
 is also presented.
 
-Element quality is not considered here as a constraint or goal, as there are
-numerous methods for surface mesh quality optimization \cite{frey1998,
-garimella2002, garimella2004a, garimella2004b, jiao2005, jiao2006, jiao2011,
-jiao2013, lopez2008, montenegro2005, montenegro2006, montenegro2008,
-montenegro2011, roca2012, roca2013, shivanna2010, zhang2009} which could be
-used in a postprocessing step if greater mesh quality is required.  Instead
-only optimal representation of the underlying geometry is studied.
+Element quality is not considered here as a constraint or goal, as there
+are numerous methods for surface mesh quality optimization
+\cite{frey1998,garimella2002,garimella2004a,garimella2004b,jiao2005,jiao2006,jiao2011,jiao2013,lopez2008,montenegro2005,montenegro2006,montenegro2008,montenegro2011,roca2012,roca2013,shivanna2010,zhang2009}
+which could be used in a postprocessing step if greater mesh quality is
+required.  Instead only optimal representation of the underlying
+geometry is studied.
