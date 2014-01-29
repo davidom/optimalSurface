@@ -34,18 +34,26 @@ search methods do not use derivatives and hence can be used on problems for
 the most general problems for which derivatives either do not exist or are 
 impractical to compute.
 
-The optimization employed here uses a simple ``cross''
-pattern (up down left right center) {\bf{[DAVE: Add figure for cross 
-pattern here.]}} which is sized based on the local geometry so that it 
-could be moved inside of the triangles/hulls many times before
-encountering the boundary. In the case of triangle splitting, the cross
-was sized as $0.001$ multiplied by the average edge length of the
-triangle. In the case of node movement, the cross was sized as $0.001$
-multiplied by the average edge length of the topologically attached
-edges. The cross pattern was not resized during optimization.
-Additionally, the search was not allowed to create inverted elements.
-This was enforced by halting a search whose next step would create any
-overlapping edges, tangled elements, etc... Care was taken to ensure
-that convergence of the local optimization method was obtained; this is
-important since criteria must be met in order for the heuristic pattern
-search methods to converge~\cite{patternsearch2,patternsearch3}.
+The optimization employed here uses a simple ``cross'' pattern (up down
+left right center, \Cref{crossPattern}) which is sized based on the
+local geometry so that it could be moved inside of the triangles/hulls
+many times before encountering the boundary. In the case of triangle
+splitting, the cross was sized as $0.001$ multiplied by the average edge
+length of the triangle. In the case of node movement, the cross was
+sized as $0.001$ multiplied by the average edge length of the
+topologically attached edges. The cross pattern was not resized during
+optimization.  Additionally, the search was not allowed to create
+inverted elements.  This was enforced by halting a search whose next
+step would create any overlapping edges, tangled elements, etc... Care
+was taken to ensure that convergence of the local optimization method
+was obtained; this is important since criteria must be met in order for
+the heuristic pattern search methods to
+converge~\cite{patternsearch2,patternsearch3}.
+
+\begin{figure}
+  \begin{center}
+  \label{crossPattern}
+  \includegraphics[width=50mm]{Figures/crossPattern.png}
+  \caption{Cross Pattern used for Pattern Search Optimization}
+  \end{center}
+\end{figure}
