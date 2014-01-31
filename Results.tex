@@ -18,7 +18,7 @@ surface area of the peaks function in the given domain was calculated by
 uniformly triangulating the surface with a very fine resolution. The
 result was found to converge to $177.944$ with a $u$ and $v$ resolution
 of 301 points. For ease of presentation, the peaks functions is shown as
-a contour plot where red represents local maxima and blue represents
+a contour plot where red represents local maxima, and blue represents
 local minima/maxima.
 
 \subsection{Triangle and Edge Splitting}
@@ -44,22 +44,22 @@ above.
 
 In \ref{fig_RefineOnlyA} it can be seen that only three nodes were
 inserted. This is due to the very high value of $tol_{RD}$ for this
-example.  However, the nodes that were inserted were inserted very near
+example.  However, nodes were inserted very near
 to the local minima/maxima of the function. If $tol_{RD}$ were halved to
 $0.25$, \ref{fig_RefineOnlyB} then $92$ nodes are inserted. Again, the
 nodes are inserted very near to local minima/maxima and additionally
 near saddle points. If $tol_{RD}$ is halved again to $0.125$,
 \ref{fig_RefineOnlyC}, no more nodes are inserted. This is due to the
 very poor quality triangles.  The sliver triangles that can be seen in
-\ref{fig_RefineOnlyB}, \ref{fig_RefineOnlyC} represent nearly planar section
-of the mesh and therefore not refined further. This is the major
-shortcoming of the developed algorithm: element quality is not
-considered and this limitation leads to poor quality meshes that cannot
-be refined further.
+\ref{fig_RefineOnlyB}, \ref{fig_RefineOnlyC} represent a nearly planar 
+section of the mesh and therefore is not refined further.  The 
+major shortcoming of the developed algorithm is that element quality is 
+not considered.  This limitation leads to poor quality meshes that 
+cannot be refined further.
 
 \subsection{Node Movement Effect}
 In order to show the effect of node movement, the resultant mesh shown
-in \ref{fig_RefineOnlyB} is used as input and the same value for
+in \ref{fig_RefineOnlyB} is used as input, and the same value for
 $tol_{RD} = 0.25$ is used with \ref{alg_NodeSmoothing}.
 
 \begin{figure}[h!]
@@ -72,7 +72,7 @@ $tol_{RD} = 0.25$ is used with \ref{alg_NodeSmoothing}.
   \end{center}
 \end{figure}
 
-The node movement was very effective at reducing representation deficit.
+Node movement was very effective at reducing representation deficit.
 For this particular case, it reduced the representation deficit of the
 input mesh by $23.36\%$. It should also be noted that the local
 minima/maxima were accurately maintained by this procedure. It can also
@@ -83,10 +83,10 @@ movement was allowed to perform local reconnections where needed
 side-effect.
 
 \subsection{Effective Combination}
-It easily noted that while the aforementioned mesh operations are
-effective at reducing representation deficit they do not create high
+It is easily noted that while the aforementioned mesh operations are
+effective at reducing representation deficit, they do not create high
 quality triangles.  However, with the addition of a simple min-max edge
-flip pass in between refinement and node movement passes the element
+flip pass in between refinement and node movement passes, the element
 quality and representation deficit can be improved significantly.
 
 \begin{figure}[h!]
@@ -99,10 +99,10 @@ quality and representation deficit can be improved significantly.
   \end{center}
 \end{figure}
 
-In \ref{fig_ComboC} the marked difference in mesh quality and mesh
-density caused by local reconnection can be seen. The addition of the
-local reconnection enabled the quality of triangle to be improved every
-step therefore allowed more nodes to be inserted. In this case, instead
-of $92$ nodes being inserted (\ref{fig_ComboA}), $713$ nodes were
+In \ref{fig_ComboC}, the marked difference in mesh quality and mesh
+density caused by local reconnection can be seen.  The addition of the
+local reconnection enabled the triangle quality to be improved every
+step and therefore allowed more nodes to be inserted. In this case, 
+instead of $92$ nodes being inserted (\ref{fig_ComboA}), $713$ nodes were
 inserted. The surface area of the final mesh was $179.234$. This is a
 representation deficit of $0.725\%$.
