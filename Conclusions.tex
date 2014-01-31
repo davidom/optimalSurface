@@ -1,10 +1,16 @@
 In this work, the concept of optimal mesh refinement was explored. This
-was done through the development of a formal definition for three
-fundamental mesh operations, triangle split, edge split, and node
-movement; each with respect to the concept of {\it representation
-deficit}. Results were given showing this methodology to be an effective
+was done through the formulation of optimization problems which, when 
+solved, yield optimal triangular surface meshes based on minimizing the 
+{\it representation deficit}.  Optimization problems were developed for 
+three fundamental mesh operations, i.e., triangle split, edge split, and 
+node movement.  The optimization problems were solved using a 
+local, constrained numerical optimization approach similar to a pattern 
+search.  A heuristic schedule of mesh operations to be performed was 
+developed based upon the authors' observations on the performance 
+of various combinations of the operations.  Results were given showing 
+this methodology to be an effective
 method for mesh refinement. The most effective method was found to be a
-combination of the above three fundamental mesh operations and delaunay
+combination of the above three fundamental mesh operations and Delaunay
 local reconnection. The representation is also efficient in that the
 interior of the domain was not overly refined in order to achieve the
 desired surface representation.
@@ -24,5 +30,6 @@ grid~\cite{mclaurin13} $\mapsto$ surface mesh~\cite{mclaurin14}
 $\mapsto$ volume mesh) could be employed. This would allow for
 optimization of each stage of the mesh generation procedure.  Finally,
 parallelization of the algorithm would allow for optimal generation of
-very large surface meshes such as those required by {\bf{Dave:  Cite a
-``killer'' engineering application here.}} applications.
+very large surface meshes such as those required for computational
+simulations of turbulent fluid flow~\cite{turbulence} and coastal
+ocean modeling~\cite{coastal_ocean_modeling}.
