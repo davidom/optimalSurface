@@ -86,9 +86,10 @@ side-effect.
 \subsection{Effective Combination}
 It is easily noted that while the aforementioned mesh operations are
 effective at reducing representation deficit, they do not create high
-quality triangles.  However, with the addition of a simple min-max edge
-flip pass in between refinement and node movement passes, the element
-quality and representation deficit can be improved significantly.
+quality triangles.  However, with the addition of a Delaunay local
+reconnection pass in between refinement and node movement passes, the
+element quality and representation deficit can be improved
+significantly.
 
 \begin{figure}[h!]
   \begin{center}
