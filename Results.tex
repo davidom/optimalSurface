@@ -32,13 +32,13 @@ above.
 
 \begin{figure}[h!]
   \begin{center}
-  \label{fig_RefineOnly}
 
   \subfloat[$tol_{RD}=0.5$]{\label{fig_RefineOnlyA}\includegraphics[width=50mm]{Figures/RefineOnly05.png}}
   \subfloat[$tol_{RD}=0.25$]{\label{fig_RefineOnlyB}\includegraphics[width=50mm]{Figures/RefineOnly025.png}}
   \subfloat[$tol_{RD}=0.125$]{\label{fig_RefineOnlyC}\includegraphics[width=50mm]{Figures/RefineOnly0125.png}}
 
   \caption{Mesh Refinement Only}
+  \label{fig_RefineOnly}
   \end{center}
 \end{figure}
 
@@ -64,10 +64,11 @@ $tol_{RD} = 0.25$ is used with \ref{alg_NodeSmoothing}.
 
 \begin{figure}[h!]
   \begin{center}
-  \label{fig_NodeSmoothing}
  
   \subfloat[$tol_{RD}=0.25$]{\label{fig_NodeSmoothingA}\includegraphics[width=60mm]{Figures/RefineOnly025.png}}
   \subfloat[$tol_{RD}=0.25$]{\label{fig_NodeSmoothingB}\includegraphics[width=60mm]{Figures/NodeSmooth025.png}}
+  \caption{Effect of Node Movement on RD and Mesh Quality}
+  \label{fig_NodeSmoothing}
 
   \end{center}
 \end{figure}
@@ -91,11 +92,12 @@ quality and representation deficit can be improved significantly.
 
 \begin{figure}[h!]
   \begin{center}
-  \label{fig_NodeSmoothing}
- 
   \subfloat[$tol_{RD}=0.25$, no movement]{\label{fig_ComboA}\includegraphics[width=50mm]{Figures/RefineOnly025.png}}
   \subfloat[$tol_{RD}=0.25$, movement post]{\label{fig_ComboB}\includegraphics[width=50mm]{Figures/NodeSmooth025.png}}
   \subfloat[$tol_{RD}=0.25$, reconnection]{\label{fig_ComboC}\includegraphics[width=50mm]{Figures/Reconnect025.png}}
+  \caption{Comparison of Exclusive Splitting, with addition of Node
+Movement, with further addition of local reconnection}
+  \label{fig_NodeSmoothing}
   \end{center}
 \end{figure}
 
@@ -106,3 +108,30 @@ step therefore allowed more nodes to be inserted. In this case, instead
 of $92$ nodes being inserted (\ref{fig_ComboA}), $713$ nodes were
 inserted. The surface area of the final mesh was $179.234$. This is a
 representation deficit of $0.725\%$.
+
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[width=90mm]{Figures/RDvsMeshSize.png}
+  \caption{Output Surface $RD$ and Mesh Size vs. $tol_{RD}$}
+  \label{fig_RDvsMeshSize}
+  \end{center}
+\end{figure}
+
+A clear trend can be seen in \ref{fig_RDvsMeshSize} where as the value
+of $tol_{RD}$ is decreased the representation deficit of the generated
+mesh also decreases (blue line). Also, as with many optimization
+problems, this particular geomtry (``peaks'' surface) and this
+particular initial mesh (two triangles) have noticeable local minima in
+the search space. \ref{fig_RDvsMeshSize} clearly shows three plateaus of
+representation deficit in the output mesh with decreasing $tol_{RD}$.
+The green bars depict the output mesh size and also convey the
+diminishing returns of decreasing $tol_{RD}$ too much. Only $18$
+triangles are needed for the output RD to reach $0.42$ ($42\%$).
+However, an additional $156$ triangles were needed to reduce the output
+RD by ten points ($\sim 35\%$). To get much nearer another local
+minimum (possibly the global minimum) required many more triangles,
+$738$ in total to reach $\sim 1\%$ output RD. In each case, the
+optimal substructure of the problem is apparent with the value of the
+value of $tol_{RD}$ being greater than the representation deficit of
+the generated mesh.
+
