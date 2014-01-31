@@ -14,12 +14,13 @@ not used to solve optimization problems with a large number of variables
 -- even if the problem is formulated as a global optimization problem. 
 Since there are typically millions to billions of nodes and elements in 
 meshes from application problems of interest, a global optimization 
-problem would be impractical solve based on the huge number of variables 
-that it would necessarily contain. In addition, any global optimization 
+problem would be impractical to solve based on the huge number of 
+variables that it would necessarily contain. In addition, any global 
+optimization 
 problem which would be formulated as a generalization of the local 
 optimization problems in this work would be a continuous optimization 
 problem. Typically global optimization methods are designed for use on 
-discrete optimization problems or on contious optimization problems with 
+discrete optimization problems or on continuous optimization problems with 
 convex objective functions with guaranteed global minima.
 
 For the above reasons, iterative refinement (a local optimization 
@@ -37,8 +38,7 @@ impractical to compute.
 The optimization employed here uses a simple ``cross'' pattern (up down
 left right center, \cite{crossPattern}) {\bf{Dave:  No reference by
 with this label appears in the References currently.  Please 
-update}} which 
-is sized based on the
+update}} which is sized based on the
 local geometry so that it could be moved inside of the triangles/hulls
 many times before encountering the boundary. In the case of triangle
 splitting, the cross was sized as $0.001$ multiplied by the average edge

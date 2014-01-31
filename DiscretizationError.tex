@@ -1,10 +1,11 @@
-The accuracy, or discretization error, of a piecewise, linear
+The accuracy, or discretization error, of a piecewise linear
 representation of an analytical surface in ${\mathbb R}^3$ can be
 defined in many ways depending on the intended application. The error
 associated with the discretization is discussed in terms of the
-deviation from the surface---most often quantified by calculating or
-approximating the distance from the surface for each linear entity
-(triangles and edges) in the discretization.  Another way of quantifying
+deviation from the surface, which is most often quantified by calculating 
+or approximating the distance from the surface for each linear entity
+(i.e., triangles and edges) in the discretization.  Another way of 
+quantifying
 the error associated with a discretization is to consider how well
 it approximates the surface area of the surface it represents.  In
 general, the surface area is not known {\it a priori}; however, for some
@@ -14,9 +15,9 @@ numerical cubature.  In other cases, such as when the surface is very
 irregular or rough, it is not always possible to assign a surface area
 without a generalization of the concept from geometric measure 
 theory~\cite{gmt}.  Two goals of the developed 
-method is that it be general, i.e., it 
+method are that it be general, i.e., it 
 should be independent of the underlying geometric representation, and 
-practical.  Therefore, a method requiring the surface area of the 
+also practical.  Therefore, a method requiring the surface area of the 
 underlying geometry violates the aforementioned concept of 
 generality and restricts the applications for which the proposed method 
 can be applied and hence is impractical.  Another way of 
@@ -30,8 +31,8 @@ which the discrete representation approximates curvature. First,
 however, curvature must be defined in such a way that a discrete
 approximation is meaningful and appropriate. In relevant literature,
 there are many ways to estimate surface curvature \cite{hermann07}. Some
-of it bears repeating, because it is germane to what is being discussed
-here: Consider a surface, $S$, embedded in ${\mathbb R}^3$, at point P.
+of it bears repeating because it is germane to what is being discussed
+here.  Consider a surface, $S$, embedded in ${\mathbb R}^3$, at point P.
 The concept of an osculating circle \cite{weissteineOsculatingCircle}
 does not generalize well to higher dimensions and therefore cannot be
 used here as an approximation of curvature. Generally, a (hyper)surface
@@ -42,10 +43,10 @@ be constructed by considering the principal curvature directions and
 surface normal at a given point on a surface. These three vectors are
 orthogonal and could be used to define the semi-axes of an ellipse. If
 some way could be found to determine a scale of the semi-axis associated
-with the surface normal (which is a unit-vector), this ellipse would be
+with the surface normal (which is a unit vector), this ellipse would be
 a good approximation of the surface in the direction of the principal
 curvatures. However, this requires the computation or approximation of
-derivatives---which we have ruled out here.
+derivatives which we have ruled out here.
 
 Instead of determining a three-dimensional analog to an osculating
 circle for $S$, an osculating sphere could be defined for a triangle,
@@ -66,7 +67,7 @@ the surface area of the spherical cap does not approach the area of
 $T$---it approaches that of the circumscribed circle defined by $T$.
 
 Finally, what is most appropriate is to consider the surface area of the
-tetrahedron, ${\mathbb T}$, formed by $P_0$, $P_1$,$P_2$, and $P$. This
+tetrahedron, ${\mathbb T}$, formed by $P_0$, $P_1$, $P_2$, and $P$. This
 is a meaningful comparison: as $R_D$ approaches infinity (as the
 distance between $P$ and the plane defined by $T$ approaches $P_0$) the
 surface area of ${\mathbb T}$ approaches two times the area of $T$.
@@ -74,12 +75,12 @@ Stated another way, as $D$ is refined the surface area of $D$ approaches
 that of $S$.
 
 Surface area convergence of a discretization is a sufficient condition
-for other schemes of surface grid generation/refinement. That is: if the
+for other schemes of surface grid generation/refinement. That is, if the
 difference between the surface area of the surface and the sum of the
 surface area of the discrete entities in the discretization approaches
-zero then that is sufficient to conclude that the distance between the
-discretization and surface is also approaching zero; also the dihedral
-angles between segments approaches $0$ degrees. However, the converse of
+zero, then that is sufficient to conclude that the distance between the
+discretization and surface is also approaching zero; also, the dihedral
+angles between segments approach $0$ degrees. However, the converse of
 that statement is not true. The pathological case of a highly
 oscillatory, low amplitude surface approximated by two triangles shows
 that a discretization can have a small deviation or angles between

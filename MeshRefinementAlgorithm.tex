@@ -1,5 +1,11 @@
 The following algorithm is used to generate an optimal triangulation
-based on representation deficit refinement:
+based on representation deficit refinement.  The heuristic schedule of 
+mesh operations to be performed was developed based upon our observations 
+on the performance of various combinations of the mesh operations.
+Note that heuristic schedules have been used for scheduling geometric and 
+topological mesh operations in order to improve mesh element quality; one 
+of the most advanced heuristic schedules for used for this purpose can be 
+found in~\cite{tet_aggressive}.
 
 \subsection{Algorithm Specification}
 \begin{algorithm}[H]
