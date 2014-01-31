@@ -1,4 +1,5 @@
-This work seeks to explore the concept of optimal mesh representation.
+This work explores optimal mesh representation of surfaces using 
+triangular surface meshes.
 Most mesh generation algorithms refine an initial discretization based
 on {\it a priori} error estimates or quality metrics. For example, the
 advancing-front algorithm advances boundaries into space to generate a
@@ -8,13 +9,14 @@ configurations \cite{marcum98,marcum00,shewchuk02}. These mesh
 generation strategies focus on element quality---with the
 justification being that downstream applications require high quality
 geometries in order to achieve a desired level of accuracy. These
-approaches, historically and in a modern sense, has been spectacularly
-successful at producing high quality meshes for computation simulation.
+approaches, both historically and in a modern sense, have been 
+spectacularly successful at producing high quality meshes for 
+computational simulation.
 
 Traditionally, surface grid generation processes produce good quality
 grids from the combination of geometric growth rates and smoothing.
-However, the process requires input and if the input, or starting place,
-is not appropriate, then the geometry is often under and/or over sampled
+However, the process requires input, and if the input, or starting place,
+is not appropriate, then the geometry is often under and/or oversampled
 for the intended use. That fact is not an indictment of the grid
 generation process, but instead implies that the final grid is heavily
 dependent on the inputs. In addition, if some way of controlling the
@@ -28,11 +30,13 @@ is also ubiquitous \cite{peraire87,alauzet06,buscaglia97,huang05}.
 
 The work presented here is contrasted with the above work in that only
 the degree in which the discretization approximates the geometry is
-considered.  Here a formal definition of fundamental mesh operations
-(triangle split, edge split, edge collapse, and vertex movement) is
-developed with respect to optimal representation for a continuous,
-parameterized surface. The proposed algorithm is a general-use method
-that can be applied to any surface regardless of its representation.
+considered.  Here formal definitions of fundamental mesh operations
+(triangle split, edge split, edge collapse, and vertex movement) are
+developed with respect to a locally optimal representation via 
+triangular surface meshes for a continuous, parameterized surface. The 
+proposed algorithm is a general-use method
+that can be applied to any three-dimensional surface regardless of its 
+representation.
 This is due to every step being developed without the use of
 derivatives. A result of not using derivatives is that each step in the
 algorithm is robust to large or discontinuous changes in derivatives.
@@ -44,9 +48,10 @@ detailed below. Results for mesh representation and efficiency are also
 given and discussed.  Further discussion of robustness and mesh quality
 is also presented.
 
-Element quality is not considered here as a constraint or goal, as there
+Element quality is not considered here as a constraint or goal of the 
+optimization procedure, as there
 are numerous methods for surface mesh quality optimization
 \cite{frey1998,garimella2002,garimella2004a,garimella2004b,jiao2005,jiao2006,jiao2011,jiao2013,lopez2008,montenegro2005,montenegro2006,montenegro2008,montenegro2011,roca2012,roca2013,shivanna2010,zhang2009}
 which could be used in a postprocessing step if greater mesh quality is
 required.  Instead only optimal representation of the underlying
-geometry is studied.
+geometry via triangular surface meshes is studied.
