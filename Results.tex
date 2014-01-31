@@ -1,7 +1,7 @@
 In this explorative work, results will be shown for the how each
 individual mesh operation (i.e., triangle split, edge split, and node 
 movement) affects the representation deficit. In addition, an effective
-combination of the aforementioned mesh operations was developed and the
+combination of the aforementioned mesh operations was developed, and the
 results will be shown. The geometry which is being discretized is the
 ``peaks'' function which has a well-known parametrization
 \cite{peaksMatlab}. The domain was chosen so that the boundary is
@@ -121,20 +121,24 @@ representation deficit of $0.725\%$.
   \end{center}
 \end{figure}
 
-A clear trend can be seen in \ref{fig_RDvsMeshSize}: as the value of
-$tol_{RD}$ is decreased the representation deficit of the generated mesh
+A clear trend {\bf{Dave: A trend in what?}} can be seen in 
+\ref{fig_RDvsMeshSize}; as the value of
+$tol_{RD}$ is decreased, the representation deficit of the generated mesh
 also decreases (blue line). Also, as with many optimization problems,
-this particular geomtry (``peaks'' surface) and this particular initial
-mesh (two triangles) have noticeable local minima in the search space.
+this particular geomtery (i.e., the ``peaks'' surface) and this particular 
+initial mesh (i.e., which contains two triangles) have noticeable local 
+minima in the search space.
 \ref{fig_RDvsMeshSize} clearly shows three plateaus of output
 RD in the output mesh with decreasing $tol_{RD}$.  These occur at
 $\sim42\%, \sim35\%,$ and $\sim1\%$.  The green bars depict the output
 mesh size and also convey the diminishing returns of decreasing
 $tol_{RD}$ too much. Only $18$ triangles are needed for the output RD to
 reach $0.42$ ($42\%$).  However, an additional $156$ triangles were
-needed to reduce the output RD by ten points ($\sim 35\%$). To get much
-nearer another local minimum (possibly the global minimum) required many
-more triangles, $738$ in total to reach $\sim 1\%$ output RD. In each
-case, the optimal substructure of the problem is apparent with the value
-of the value of $tol_{RD}$ being greater than the representation deficit
-of the generated mesh.
+needed to reduce the output RD by ten points ($\sim 35\%$). {\bf{Dave - 
+I'm lost. What do you mean by 10 points?  10 percent?  10 fewer points 
+(meaning nodes) in the mesh?}}  To get much closer to another local 
+minimum (possibly the global minimum) many
+more triangles were required, i.e., $738$ in total to reach $\sim 1\%$ 
+output RD. In each case, the optimal substructure of the problem is 
+apparent with the value of $tol_{RD}$ being greater than the 
+representation deficit of the generated mesh.
