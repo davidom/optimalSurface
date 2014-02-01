@@ -5,7 +5,9 @@ on the performance of various combinations of the mesh operations.
 Note that heuristic schedules have been used for scheduling geometric and 
 topological mesh operations in order to improve mesh element quality; one 
 of the most advanced heuristic schedules for used for this purpose can be 
-found in~\cite{tet_aggressive}.
+found in~\cite{tet_aggressive}. Alg.(\ref{alg_IterativeRefinement}) is
+performed until there are no longer any triangles in the mesh that can
+be refined.
 
 \subsection{Algorithm Specification}
 \begin{algorithm}[H]
