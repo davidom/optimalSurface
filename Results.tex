@@ -78,10 +78,14 @@ For this particular case, it reduced the representation deficit of the
 input mesh by $23.36\%$. It should also be noted that the local
 minima/maxima were accurately maintained by this procedure. It can also
 be seen that moved nodes that were nearby but not in local minima/maxim
-were moved to the local minima/maxima. Additionally, since the node
+were moved to the local minima/maxima.  Additionally, since the node
 movement was allowed to perform local reconnections where needed
 (discussed above), the element quality was also improved as a
-side-effect.
+side-effect.  It was also observed that nodes will often move toward
+each other when there is a ``local minimum'' nearby ({\it
+race-condition}).  However, once the two nodes get sufficiently near to
+each other, one will inevitably get nearer to the local minimum first
+and the other node will be ``pushed'' away.
 
 \subsection{Effective Combination}
 It is easily noted that while the aforementioned mesh operations are
@@ -89,7 +93,25 @@ effective at reducing representation deficit, they do not create high
 quality triangles. However, with the addition of a Delaunay local
 reconnection pass in between refinement and node movement passes, the
 element quality and representation deficit can be improved
-significantly.
+significantly.  Another phenomenon that was noticed was that during
+triangle splitting and node movement, a node would often be repositioned
+near edges. This usually meant that the nearby local minimum was either
+on the edge or on the other topological side of the edge. Without some
+sort of intervention, this would lead to nearly degenerate geometry
+being formed. In order to prevent geometry which could cause numerical
+robustness issues, when a node neared an edge during node movement the
+edge was flipped. This allowed the node to move unobstructed by the
+newly-reconnected edge.
+
+The criteria for determining if a node is ``too close'' to an edge is
+based on the size of the pattern. Once the node gets within $1\%$ of the
+average edge length, which equates to $10$ times the pattern size, it is
+considered ``too close''. There is a balance here between preventing the
+creation of degenerate geometry and allowing the pattern search to find
+{\it and then use} an optimum value. The above heuristics were found to
+be a good compromise and will be shown to be effective. If the minimum
+value for the objective function is on or across an edge, then the edge
+is flipped and the process is repeated with the new topology.
 
 \begin{figure}[h!]
   \begin{center}
@@ -140,7 +162,7 @@ angles being between $35$ and $85$ degrees.
 \end{figure}
 
 A clear trend {\bf{Dave: A trend in what?}} can be seen in 
-Fig. \ref{fig_RDvsMeshSize}; as the value of
+Fig. \ref{fig_RDvsMeshSize}: as the value of
 $tol_{RD}$ is decreased, the representation deficit of the generated mesh
 also decreases (blue line). Also, as with many optimization problems,
 this particular geomtery (i.e., the ``peaks'' surface) and this particular 
