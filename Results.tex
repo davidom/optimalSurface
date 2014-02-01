@@ -9,7 +9,7 @@ sufficiently far away from the local minima/maxima present near the origin to
 show that the developed scheme is efficient at reducing representation
 deficit. The $x$ and $y$ values are each confined between $-5.0$ and
 $5.0$ and the initial triangulation is two triangles that fill the
-quadrilateral defined by the four corner points.
+quadrilateral defined by the four corner nodes.
 
 The main driver of representation deficit, $RD$, based mesh refinement
 is the value for representation deficit. This is a ratio of the
@@ -17,7 +17,7 @@ is the value for representation deficit. This is a ratio of the
 surface area of the peaks function in the given domain was calculated by
 uniformly triangulating the surface with a very fine resolution. The
 result was found to converge to $177.944$ with a $u$ and $v$ resolution
-of 301 points. For ease of presentation, the peaks functions is shown as
+of 301 nodes. For ease of presentation, the peaks functions is shown as
 a contour plot where red represents local maxima, and blue represents
 local minima/maxima.
 
@@ -48,7 +48,7 @@ example. However, nodes were inserted very near to the local
 minima/maxima of the function. If $tol_{RD}$ were halved to $0.25$, Fig.
 \ref{fig_RefineOnlyB} then $92$ nodes are inserted. Again, the nodes are
 inserted very near to local minima/maxima and additionally near saddle
-points. If $tol_{RD}$ is halved again to $0.125$, Fig.
+nodes. If $tol_{RD}$ is halved again to $0.125$, Fig.
 \ref{fig_RefineOnlyC}, no more nodes are inserted. This is due to the
 very poor quality triangles. The sliver triangles that can be seen in
 Fig. \ref{fig_RefineOnlyB} and Fig. \ref{fig_RefineOnlyC} represent a
@@ -152,8 +152,8 @@ $\sim42\%, \sim35\%,$ and $\sim1\%$. The green bars depict the output
 mesh size and also convey the diminishing returns of decreasing
 $tol_{RD}$ too much. Only $18$ triangles are needed for the output RD to
 reach $0.42$ ($42\%$). However, an additional $156$ triangles were
-needed to reduce the output RD by ten points ($\sim 35\%$). {\bf{Dave - 
-I'm lost. What do you mean by 10 points?  10 percent?  10 fewer points 
+needed to reduce the output RD by ten nodes ($\sim 35\%$). {\bf{Dave - 
+I'm lost. What do you mean by 10 nodes?  10 percent?  10 fewer nodes 
 (meaning nodes) in the mesh?}}  To get much closer to another local 
 minimum (possibly the global minimum) many
 more triangles were required, i.e., $738$ in total to reach $\sim 1\%$ 

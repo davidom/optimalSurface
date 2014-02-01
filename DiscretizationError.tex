@@ -32,15 +32,15 @@ however, curvature must be defined in such a way that a discrete
 approximation is meaningful and appropriate. In relevant literature,
 there are many ways to estimate surface curvature \cite{hermann07}. Some
 of it bears repeating because it is germane to what is being discussed
-here.  Consider a surface, $S$, embedded in ${\mathbb R}^3$, at point P.
+here.  Consider a surface, $S$, embedded in ${\mathbb R}^3$, at node P.
 The concept of an osculating circle \cite{weissteineOsculatingCircle}
 does not generalize well to higher dimensions and therefore cannot be
 used here as an approximation of curvature. Generally, a (hyper)surface
 does not have a (hyper)sphere that approximates curvature, but rather a
 (hyper)ellipsoid. This is because a surface can have multiple values and
-directions of curvature at a point. Here, an osculating ellipsoid could
+directions of curvature at a node. Here, an osculating ellipsoid could
 be constructed by considering the principal curvature directions and
-surface normal at a given point on a surface. These three vectors are
+surface normal at a given node on a surface. These three vectors are
 orthogonal and could be used to define the semi-axes of an ellipse. If
 some way could be found to determine a scale of the semi-axis associated
 with the surface normal (which is a unit vector), this ellipse would be
@@ -54,7 +54,7 @@ $T$. A value of curvature can be calculated for each triangle in the $D$
 by considering the corresponding osculating sphere for $T$. The
 osculating sphere here can be approximated by considering the
 circumscribed sphere (circumsphere) \cite{casey1888} defined by the
-three points of the triangle, $P_0$, $P_1$, and $P_2$, and a point, $P$
+three nodes of the triangle, $P_0$, $P_1$, and $P_2$, and a node, $P$
 on the surface located within the triangle in $(u,v)$ space. The radius
 of the circumsphere will be referred to as the discrete radius of
 curvature, $R_D$. This argument for curvature approximation is a

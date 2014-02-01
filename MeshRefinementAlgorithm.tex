@@ -10,8 +10,8 @@ found in~\cite{tet_aggressive}.
 \subsection{Algorithm Specification}
 \begin{algorithm}[H]
 \begin{algorithmic}
-\caption{Find optimal point for triangle splitting}
-\Procedure{findOptimalPoint}{$t_i$} \Comment{for Triangle}
+\caption{Find optimal location for triangle splitting}
+\Procedure{findOptimalNode}{$t_i$} \Comment{for Triangle}
   \State $pattern \gets sizePattern\left( t_i \right)$
   \State $pattern \gets calculateTrianglePatternValues\left( t_i \right)$
   \State $minValue \gets determineMinPatternValue\left( pattern \right)$
@@ -28,8 +28,8 @@ found in~\cite{tet_aggressive}.
 
 \begin{algorithm}[H]
 \begin{algorithmic}
-\caption{Find optimal point for edge splitting}
-\Procedure{findOptimalPoint}{$e_i$} \Comment{for Edge}
+\caption{Find optimal location for edge splitting}
+\Procedure{findOptimalNode}{$e_i$} \Comment{for Edge}
   \State $pattern \gets sizePattern\left( e_i \right)$
   \State $pattern \gets calculateEdgePatternValues\left( e_i \right)$
   \State $minValue \gets determineMinPatternValue\left( pattern \right)$
@@ -50,10 +50,10 @@ found in~\cite{tet_aggressive}.
 \begin{algorithmic}
 \Procedure{TriangleRefine}{$T$, $tol_{RD}$} \Comment{Refine the triangulation, $T$}
   \For{each triangle, $t_i$}
-    \State $\left( p_i, minValue \right) \gets findOptimalPoint\left( t_i \right)$
+    \State $\left( p_i, minValue \right) \gets findOptimalNode\left( t_i \right)$
     \If{$tooCloseToEdge\left( p_i, t_i \right)$}
       \State $e_i \gets findNearEdge\left( p_i, t_i \right)$
-      \State $\left( p_i, minValue \right) \gets findOptimalPoint\left( e_i \right)$
+      \State $\left( p_i, minValue \right) \gets findOptimalNode\left( e_i \right)$
       \State $operation \gets EdgeSplit\left( e_i, p_i \right)$
     \Else
       \State $operation \gets triangleSplit\left( t_i, p_i \right)$
@@ -68,9 +68,9 @@ found in~\cite{tet_aggressive}.
 
 \begin{algorithm}
 \begin{algorithmic}
-\caption{Find the optimal point for node relocation}
+\caption{Find the optimal location for node relocation}
 \label{alg_NodeSmoothing}
-\Procedure{findOptimalPoint}{$n_i$} \Comment{for Node}
+\Procedure{findOptimalNode}{$n_i$} \Comment{for Node}
   \State $pattern \gets sizePattern\left( n_i \right)$
   \State $pattern \gets calculateNodePatternValues\left( n_i \right)$
   \State $minValue \gets determineMinPatternValue\left( pattern \right)$
@@ -92,7 +92,7 @@ found in~\cite{tet_aggressive}.
   \For{each node, $n_i$}
     \State $pattern \gets sizePattern\left( e_i \right)$
     \State $pattern \gets calculateNodePatternValues\left( n_i \right)$
-    \State $\left( p_i, minValue \right) \gets findOptimalPoint\left( e_i \right)$
+    \State $\left( p_i, minValue \right) \gets findOptimalNode\left( e_i \right)$
   \EndFor
   \If{$minValue < tol_{RD}$}
     \State relocate $n_i$ to $p_i$
