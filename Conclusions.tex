@@ -1,19 +1,21 @@
 In this work, the concept of optimal mesh refinement was explored. This
-was done through the formulation of optimization problems which, when 
-solved, yield optimal triangular surface meshes based on minimizing the 
-{\it representation deficit}.  Optimization problems were developed for 
-three fundamental mesh operations, i.e., triangle split, edge split, and 
-node movement.  The optimization problems were solved using a 
-local, constrained numerical optimization approach similar to a pattern 
-search.  A heuristic schedule of mesh operations to be performed was 
-developed based upon the authors' observations on the performance 
-of various combinations of the operations.  Results were given showing 
-this methodology to be an effective
-method for mesh refinement. The most effective method was found to be a
-combination of the above three fundamental mesh operations and Delaunay
-local reconnection. The representation is also efficient in that the
-interior of the domain was not overly refined in order to achieve the
-desired surface representation.
+was done through the formulation of optimization problems which, when
+solved, yield optimal triangular surface meshes based on minimizing the
+{\it representation deficit}.  Optimization problems were developed for
+three fundamental mesh operations, i.e., triangle split, edge split, and
+node movement.  The optimization problems were solved using a local,
+constrained numerical optimization approach similar to a pattern search.
+A heuristic schedule of mesh operations to be performed was developed
+based upon the authors' observations on the performance of various
+combinations of the operations. The chosen combination addresses the
+main drawback of the developed algorithm: element quality is not
+considered during mesh generation. Results were given showing this
+methodology to be an effective method for mesh refinement. The most
+effective method was found to be a combination of the above three
+fundamental mesh operations and Delaunay local reconnection. The
+representation is also efficient in that the interior of the domain was
+not overly refined in order to achieve the desired surface
+representation.
 
 %\subsection{Future Work}
 There are several possible directions for future work.  One avenue for
