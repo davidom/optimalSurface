@@ -78,7 +78,7 @@ Node movement was very effective at reducing representation deficit.
 For this particular case, it reduced the representation deficit of the
 input mesh by $23.36\%$. It should also be noted that the local
 minima/maxima were accurately maintained by this procedure. It can also
-be seen that moved nodes that were nearby but not in local minima/maxim
+be seen that moved nodes that were nearby but not in local minima/maxima
 were moved to the local minima/maxima.  Additionally, since the node
 movement was allowed to perform local reconnections where needed
 (discussed above), the element quality was also improved as a
@@ -120,17 +120,17 @@ nodes were inserted. The surface area of the final mesh was $179.234$.
 This is a representation deficit of $0.725\%$.  Fig.
 \ref{fig_MeshQuality} shows a histogram of interior angles vs percentage
 of all interior angles of the mesh results shown in Fig.
-\ref{fig_Combo}. The blue line represents results from only using
-triangle and edge splitting. The green line represents results from
-using node movement after mesh generation (Node Movement Effect). The
-yellow line represents the results from including local reconnection in
-addition to node movement. The addition of node movement made a
-significant difference in improving mesh quality. This is quantified
-by noticing the improvement in interior angle distribution away from the
-extremes of $0$ and $180$ degrees. A further improvement is seen from
-using local reconnection. The yellow line shows further improvement in
-the interior angle distribution with the vast majority of interior
-angles being between $35$ and $85$ degrees.
+\ref{fig_Combo}. The blue data represents results from only using
+triangle and edge splitting. The green data represents results from
+using node movement after mesh generation. The yellow data represents
+the results from including local reconnection in addition to node
+movement. The addition of node movement made a significant difference in
+improving mesh quality. This is quantified by noticing the improvement
+in interior angle distribution away from the extremes of $0$ and $180$
+degrees. A further improvement is seen from using local reconnection.
+The yellow line shows further improvement in the interior angle
+distribution with the vast majority of interior angles being between
+$35$ and $85$ degrees.
 
 \begin{figure}[h!]
   \begin{center}
