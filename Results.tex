@@ -44,19 +44,17 @@ above.
 
 In Fig. \ref{fig_RefineOnlyA}, it can be seen that only three nodes were
 inserted. This is due to the very high value of $tol_{RD}$ for this
-example.  However, nodes were inserted very near
-to the local minima/maxima of the function. If $tol_{RD}$ were halved to
-$0.25$, Fig. \ref{fig_RefineOnlyB} then $92$ nodes are inserted. Again, 
-the
-nodes are inserted very near to local minima/maxima and additionally
-near saddle points. If $tol_{RD}$ is halved again to $0.125$,
-Fig. \ref{fig_RefineOnlyC}, no more nodes are inserted. This is due to the
-very poor quality triangles.  The sliver triangles that can be seen in
-Fig. \ref{fig_RefineOnlyB} and Fig. \ref{fig_RefineOnlyC} represent a 
-nearly planar 
-section of the mesh and therefore is not refined further.  The 
-major shortcoming of the developed algorithm is that element quality is 
-not considered.  This limitation leads to poor quality meshes that 
+example. However, nodes were inserted very near to the local
+minima/maxima of the function. If $tol_{RD}$ were halved to $0.25$, Fig.
+\ref{fig_RefineOnlyB} then $92$ nodes are inserted. Again, the nodes are
+inserted very near to local minima/maxima and additionally near saddle
+points. If $tol_{RD}$ is halved again to $0.125$, Fig.
+\ref{fig_RefineOnlyC}, no more nodes are inserted. This is due to the
+very poor quality triangles. The sliver triangles that can be seen in
+Fig. \ref{fig_RefineOnlyB} and Fig. \ref{fig_RefineOnlyC} represent a
+nearly planar section of the mesh and therefore is not refined further.
+The major shortcoming of the developed algorithm is that element quality
+is not considered. This limitation leads to poor quality meshes that
 cannot be refined further.
 
 \subsection{Node Movement Effect}
@@ -88,7 +86,7 @@ side-effect.
 \subsection{Effective Combination}
 It is easily noted that while the aforementioned mesh operations are
 effective at reducing representation deficit, they do not create high
-quality triangles.  However, with the addition of a Delaunay local
+quality triangles. However, with the addition of a Delaunay local
 reconnection pass in between refinement and node movement passes, the
 element quality and representation deficit can be improved
 significantly.
@@ -100,21 +98,38 @@ significantly.
   \subfloat[$tol_{RD}=0.25$, reconnection]{\label{fig_ComboC}\includegraphics[width=50mm]{Figures/Reconnect025.png}}
   \caption{Comparison of Exclusive Splitting, with addition of Node
 Movement, with further addition of local reconnection}
-  \label{fig_NodeSmoothing}
+  \label{fig_Combo}
   \end{center}
 \end{figure}
 
-[FIGURE ON MESH QUALITY]
+\begin{figure}[h!]
+  \begin{center}
+  \includegraphics[width=90mm]{Figures/MeshQuality.png}
+  \caption{Triangle interior angle histogram}
+  \label{fig_MeshQuality}
+  \end{center}
+\end{figure}
 
 In Fig. \ref{fig_ComboC}, the marked difference in mesh quality and mesh
-density caused by local reconnection can be seen.  The addition of the
+density caused by local reconnection can be seen. The addition of the
 local reconnection enabled the triangle quality to be improved every
-step and therefore allowed more nodes to be inserted. In this case, 
-instead of $92$ nodes being inserted (Fig. \ref{fig_ComboA}), $713$ nodes 
-were
-inserted. The surface area of the final mesh was $179.234$. This is a
-representation deficit of $0.725\%$.
-[PARAGRAPH ON MESH QUALITY]
+step and therefore allowed more nodes to be inserted. In this case,
+instead of $92$ nodes being inserted (Fig. \ref{fig_ComboA}), $713$
+nodes were inserted. The surface area of the final mesh was $179.234$.
+This is a representation deficit of $0.725\%$.  Fig.
+\ref{fig_MeshQuality} shows a histogram of interior angles vs percentage
+of all interior angles of the mesh results shown in Fig.
+\ref{fig_Combo}. The blue line represents results from only using
+triangle and edge splitting. The green line represents results from
+using node movement after mesh generation (Node Movement Effect). The
+yellow line represents the results from including local reconnection in
+addition to node movement. The addition of node movement made a
+significant difference in improving mesh quality. This is quantified
+by noticing the improvement in interior angle distribution away from the
+extremes of $0$ and $180$ degrees. A further improvement is seen from
+using local reconnection. The yellow line shows further improvement in
+the interior angle distribution with the vast majority of interior
+angles being between $35$ and $85$ degrees.
 
 \begin{figure}[h!]
   \begin{center}
@@ -132,11 +147,11 @@ this particular geomtery (i.e., the ``peaks'' surface) and this particular
 initial mesh (i.e., which contains two triangles) have noticeable local 
 minima in the search space.
 Figure \ref{fig_RDvsMeshSize} clearly shows three plateaus of output
-RD in the output mesh with decreasing $tol_{RD}$.  These occur at
-$\sim42\%, \sim35\%,$ and $\sim1\%$.  The green bars depict the output
+RD in the output mesh with decreasing $tol_{RD}$. These occur at
+$\sim42\%, \sim35\%,$ and $\sim1\%$. The green bars depict the output
 mesh size and also convey the diminishing returns of decreasing
 $tol_{RD}$ too much. Only $18$ triangles are needed for the output RD to
-reach $0.42$ ($42\%$).  However, an additional $156$ triangles were
+reach $0.42$ ($42\%$). However, an additional $156$ triangles were
 needed to reduce the output RD by ten points ($\sim 35\%$). {\bf{Dave - 
 I'm lost. What do you mean by 10 points?  10 percent?  10 fewer points 
 (meaning nodes) in the mesh?}}  To get much closer to another local 
